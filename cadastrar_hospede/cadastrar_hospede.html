@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="cadastrar_hospede.css">
+</head>
+<body>
+    <div class="wrapper">
+        <h2>Faça seu Cadastro</h2>
+        <p>Ja tenho uma conta</p>
+        <form>
+            <div class="Form">
+                <input type="text" name="name" placeholder="Nome" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="senha" placeholder="Senha" required>
+                <input type="tel" name="telefone" pattern="[0-9]{3}-[0-9]{9}" placeholder="Telefone" required>
+                <small>Formato Telefone: 123-123456789</small>
+            </div>
+            <div class="upload">
+                <label for="profile_picture">Envie sua foto</label>
+                <input type="file" name="profile_picture" id="profile_picture">
+            </div>
+            <div class="submit">
+                <button type="submit">Criar</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
