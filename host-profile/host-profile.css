@@ -114,31 +114,24 @@ button {
     text-decoration: none;
 }
 
-#comments-card {
+#comments-row {
     display: flex;
-    flex-direction: column;
-    padding: 0.5rem;
-    width: 71.5%;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+#comments-box {
+    width: 71%;
     margin: 0 auto;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
     margin: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-#comments-card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-}
-
-.guest-icon {
-    max-width: 30%;
-    border-radius: 50%;
-}
-
-.guest-name {
-    width: 80%;
-}
-
-.single-comment-card {
+.comment-card {
     display: flex;
     flex-direction: column;
     padding: 2rem;
@@ -150,10 +143,21 @@ button {
     border-radius: 2%;
 }
 
-.comment-body {
-    width: 80%;
+.guest-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
-.comments-row {
-    justify-content: end;
+.stay-and-guest-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.guest-icon-image {
+    max-width: 90%;
+}
+
+.guest-icon {
+    width: 20%;
 }
