@@ -22,7 +22,7 @@ img{
 .form{
     display: flex;
     flex-direction: column;
-    
+
 }
 .checked {
     color: orange;
