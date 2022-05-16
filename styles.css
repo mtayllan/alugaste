@@ -1,13 +1,20 @@
+
+/* @import "styles2.css"; */
+
 :root {
   --primary-color: #1e90ff;
-  --light-text-color: white;
+  --light-text-color: #EEE;
+  --background-color: #EEE;
+  --text-color: #111;
+  --border-color: rgba(0, 0, 0, 0.175);
 }
-
 
 html {
   font-size: 16px;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 body {
@@ -41,17 +48,18 @@ button {
 }
 
 
-input, textarea{
+input,
+textarea {
   display: block;
   width: 100%;
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #212529;
-  background-color: #fff;
+  color: var(--text-color);
+  background-color: var(--background-color);
   background-clip: padding-box;
-  border: 1px solid #ced4da;
+  border: 1px solid var(--border-color);
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -65,9 +73,9 @@ input, textarea{
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: white;
+  background-color: var(--background-color);
   background-clip: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.175);
+  border: 1px solid var(--border-color);
   border-radius: 0.375rem;
 }
 
@@ -75,7 +83,7 @@ img.logo {
   width: 90px;
 }
 
-.navbar{
+.navbar {
   position: sticky;
   top: 0;
   background-color: var(--primary-color);
@@ -83,7 +91,7 @@ img.logo {
   z-index: 99;
 }
 
-.navbar-inner{
+.navbar-inner {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -95,17 +103,17 @@ img.logo {
 }
 
 .navbar-toggler,
-.navbar-toggler-check{
+.navbar-toggler-check {
   display: none;
 }
 
-.navbar-menu{
+.navbar-menu {
   display: flex;
   flex-direction: row;
   gap: 1rem;
 }
 
-.navbar-link{
+.navbar-link {
   display: block;
   padding: .5rem 1.25rem;
   text-align: center;
@@ -114,68 +122,68 @@ img.logo {
   transition: color .15s;
 }
 
-.logo{
+.logo {
   font-size: 1.75rem;
   font-weight: 600;
   letter-spacing: 1px;
 }
 
-.logo-link{
+.logo-link {
   text-decoration: none;
   color: inherit;
 }
 
-.button{
+.button {
   display: inline-block;
   padding: .5rem 1.75rem;
   text-align: center;
   text-decoration: none;
   background-color: #0d6efd;
-  color: #fff;
+  color: var(--light-text-color);
   border-radius: 9999px;
   transition: filter .15s;
 }
 
-.button:hover{
+.button:hover {
   filter: brightness(.9);
 }
 
 @media only screen and (max-width:1024px) {
-  .navbar-menu{
-     gap: .5rem;
+  .navbar-menu {
+    gap: .5rem;
   }
 
-  .button{
-     padding-inline: 1.5rem;
+  .button {
+    padding-inline: 1.5rem;
   }
 }
 
 @media only screen and (max-width:768px) {
-  :root{
-     font-size: 15px;
-  }
-  
-  .navbar-menu{
-     position: absolute;
-     top: -100vh;
-     left: 0;
-     width: 100%;
-     flex-direction: column;
-     padding: .5rem 4% 1rem;
-     background-color: var(--primary-color);
-     color: black;
-     z-index: -1;
-     transition: top .5s;
+  :root {
+    font-size: 15px;
   }
 
-  .navbar-toggler{
-     display: block;
-     font-size: 1.5rem;
-     color: black;
+  .navbar-menu {
+    position: absolute;
+    top: -100vh;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    padding: .5rem 4% 1rem;
+    background-color: var(--primary-color);
+    color: var();
+    z-index: -1;
+    transition: top .5s;
   }
 
-  .navbar-toggler-check:checked + .navbar-menu{
-     top: 64px;
+  .navbar-toggler {
+    display: block;
+    font-size: 1.5rem;
+    color: black;
+  }
+
+  .navbar-toggler-check:checked+.navbar-menu {
+    top: 64px;
   }
 }
 
@@ -194,3 +202,4 @@ h1.nav-logo {
   max-width: 100%;
   max-height: 100%;
 }
+
