@@ -17,6 +17,8 @@ html {
 .gallery .main img {
   width: 100%;
   margin: 0 auto;
+  max-height: 450px;
+  object-fit: cover;
 }
 
 .gallery .others {
@@ -53,25 +55,27 @@ html {
   gap: 5px;
 }
 
-.comment .header .picture {
-  flex: 1;
-}
-
 .comment .header .picture img {
-  width: 100%;
-  max-height: 100px;
+  width: 100px;
+  height: 100px;
   object-fit: cover;
   object-position: top;
 }
 
-.comment .header .info {
-  flex: 3;
-}
-
-
 @media screen and (min-width: 720px) {
   .wrapper {
-    width: 80%;
+    max-width: 1300px;
     margin: 0 auto;
+  }
+
+  .comments {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .comment {
+    flex: 1 1 40%;
   }
 }
