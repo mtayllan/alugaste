@@ -24,7 +24,7 @@ html {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  font-size: 1;
+  font-size: 1rem;
   justify-content: center;
   font-weight: bold;
 }
