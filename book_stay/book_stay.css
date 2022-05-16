@@ -8,7 +8,7 @@
 #stay-information-and-login {
     display: flex;
     flex-direction: column;
-    width: 30%;
+    width: 50%;
     align-items: center;
 }
 
@@ -26,8 +26,8 @@
 #house-information {
     display: flex;
     flex-direction: column;
-    width: 70%;
-    height: 90vh;
+    width: 40%;
+    margin: 1rem;
     justify-content: center;
 }
 
@@ -36,11 +36,10 @@
     height: 100%;
 }
 
-#house-pictures-and-name {
+#house-picture-and-name {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    height: 100%;
+    align-items: start;
 }
 
 #house-picture {
@@ -76,4 +75,14 @@
 
 #stay-total-price {
     margin-top: 1rem;
+}
+
+.precos {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.p-1 {
+    padding: 1rem;
 }
