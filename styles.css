@@ -73,28 +73,25 @@ img.logo {
 
 nav {
   border: 1px solid #ced4da;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding-right: 2rem;
+  padding-left: 2rem;
 }
 
-nav ul {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-    padding-right: 2rem;
+#menu-items {
+  display: flex;
+  flex-direction: row;
 }
 
-nav ul li {
-  list-style-type: none;
+#menu-items div {
   margin: 0 1rem 0 1rem;
 }
 
-nav ul li:hover {
+#menu-items div:hover {
   cursor: pointer;
-}
-
-nav #menu-items {
-  display: flex;
-  flex-direction: row;
 }
