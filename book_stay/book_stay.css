@@ -92,3 +92,22 @@
 .p-1 {
     padding: 1rem;
 }
+
+
+@media only screen and (max-width:768px) {
+    #stay-information-and-login, #house-information {
+        width: 100%;
+    }
+
+    #house-list-card, #profile-card {
+        align-items: center;
+    }
+
+    .stay-and-guest-info {
+        margin-left: 1rem;
+    }
+
+    #book-stay-row {
+        flex-direction: column;
+    }
+}
