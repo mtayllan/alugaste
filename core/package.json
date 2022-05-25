@@ -1,0 +1,21 @@
+{
+  "name": "alugaste-core",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "room.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mtayllan/alugaste.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mtayllan/alugaste/issues"
+  },
+  "homepage": "https://github.com/mtayllan/alugaste#readme",
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}
