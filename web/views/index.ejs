@@ -1,47 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- contentFor('pageHeaders') %>
+<link rel="stylesheet" href="lista_de_imoveis.css">
+<title>Lista de imóveis</title>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="lista_de_imoveis.css">
-  <title>Lista de imóveis</title>
-</head>
-
-<body>
-  <%- include('navbar') %>
-  <section>
-    <div class="container">
-      <h1>Imóveis</h1>
-      <div class="search">
-        <input type="search" name="search" id="search" placeholder="Pesquisar">
-        <button type="submit">Buscar</button>
-      </div>
-      <div class="container-imoveis">
-        <% rooms.forEach(room => { %>
-          <div class="imovel card">
-            <div class="img-imovel">
-              <img
-                src="<%= room.photo %>"
-                alt="">
-            </div>
-            <div class="info-imovel">
-              <h3><%= room.name %> (<%= room.reviewMean %>⭐)</h3>
-              <h4><%= room.address %></h4>
-              <h4><%= room.maxGuests %> hospedes</h4>
-            </div>
-          </div>
-        <% }) %>
-      </div>
-      <br>
-      <button type="button">Carregar mais</button>
+<%- contentFor('body') %>
+<section>
+  <div class="container">
+    <h1>Imóveis</h1>
+    <div class="search">
+      <input type="search" name="search" id="search" placeholder="Pesquisar">
+      <button type="submit">Buscar</button>
     </div>
-  </section>
-</body>
-</html>
+    <div class="container-imoveis">
+      <% rooms.forEach(room => { %>
+        <div class="imovel card">
+          <div class="img-imovel">
+            <img
+              src="<%= room.photo %>"
+              alt="">
+          </div>
+          <div class="info-imovel">
+            <h3><%= room.name %> (<%= room.reviewMean %>⭐)</h3>
+            <h4><%= room.address %></h4>
+            <h4><%= room.maxGuests %> hospedes</h4>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+    <br>
+    <button type="button">Carregar mais</button>
+  </div>
+</section>

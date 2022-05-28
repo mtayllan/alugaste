@@ -1,12 +1,15 @@
 import express from 'express';
+import expressLayouts from 'express-ejs-layouts';
 import { getRooms } from 'alugaste-core/rooms.js';
 
-const app = express()
-const port = 3000
 
-app.use(express.static('./web/assets'))
+const app = express();
+const port = 3000;
+
+app.use(express.static('./web/assets'));
 app.set('view engine', 'ejs');
-app.set('views', './web/views')
+app.set('views', './web/views');
+app.use(expressLayouts);
 
 app.get('/', (req, res) => {
   const rooms = getRooms();
