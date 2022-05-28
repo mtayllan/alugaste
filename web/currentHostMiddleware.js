@@ -1,7 +1,7 @@
 import { authenticateByToken } from 'alugaste-core/host/authentication.js'
 
 export const currentHostMiddleware = async (req, res, next) => {
-  const token = req.cookies._alugaste_session;
+  const token = req.cookies._alugaste_host_session;
   if (token) {
     const result = authenticateByToken();
     if (result !== 'invalid_token') {
