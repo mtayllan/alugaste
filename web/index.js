@@ -5,8 +5,8 @@ import { getRooms } from 'alugaste-core/rooms.js';
 import { login as hostLogin } from 'alugaste-core/host/authentication.js'
 import { login as guestLogin } from 'alugaste-core/guest/authentication.js'
 import cookieParser from 'cookie-parser';
-import { currentHostMiddleware } from './currentHostMiddleware.js';
-import { currentGuestMiddleware } from './currentGuestMiddleware.js';
+import { hostAuthentication } from './middlewares/hostAuthentication.js';
+import { guestAuthentication } from './middlewares/guestAuthentication.js';
 
 const app = express();
 const port = 3000;
@@ -18,8 +18,8 @@ app.use(expressLayouts);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(currentHostMiddleware);
-app.use(currentGuestMiddleware);
+app.use(hostAuthentication);
+app.use(guestAuthentication);
 
 app.get('/', (req, res) => {
   const rooms = getRooms();
