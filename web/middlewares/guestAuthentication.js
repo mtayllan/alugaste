@@ -13,6 +13,8 @@ export const guestAuthentication = async (req, res, next) => {
     if (result !== 'invalid_token') {
       req.guestSignedIn = true;
       req.currentGuest = result;
+      res.locals.guestSignedIn = true;
+      res.locals.currentGuest = result;
     } else {
       clearAuthentication(req, res);
     }
