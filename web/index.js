@@ -8,6 +8,7 @@ import { guestAuthentication } from './middlewares/guestAuthentication.js';
 import * as hostLogin from './actions/host/login.js';
 import * as guestLogin from './actions/guest/login.js';
 import * as guestRegister from './actions/guest/register.js';
+import * as guestLogout from './actions/guest/logout.js';
 
 const app = express();
 const port = 3000;
@@ -32,6 +33,7 @@ app.post('/host/login', hostLogin.postLogin);
 
 app.get('/guest/login', guestLogin.getLogin);
 app.post('/guest/login', guestLogin.postLogin);
+app.get('/guest/logout', guestLogout.getLogout);
 app.get('/guest/register', guestRegister.getRegister)
 app.post('/guest/register', guestRegister.postRegister)
 

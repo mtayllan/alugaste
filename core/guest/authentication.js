@@ -52,3 +52,15 @@ export const login = async ({ email, password }) => {
   }
 }
 
+export const logout = async (guest) => {
+  const mongoClient = createMongoClient();
+  try {
+    await mongoClient.connect();
+    const collection = mongoClient.db('alugaste').collection('guests');
+    const query = { access_token: guest.access_token };
+    await collection.updateOne(query, { $unset: { access_token: '' } });
+    return true;
+  } finally {
+    await mongoClient.close();
+  }
+}
