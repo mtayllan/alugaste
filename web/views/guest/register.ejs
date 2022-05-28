@@ -1,0 +1,21 @@
+<%- contentFor('pageHeaders') %>
+<link rel="stylesheet" href="/guest/register.css">
+<title>Cadastro - Hospede</title>
+
+<%- contentFor('body') %>
+<div class="wrapper card">
+  <h2>Faça seu Cadastro</h2>
+  <form action="/guest/register" method="post">
+    <div class="Form">
+      <input type="text" name="name" placeholder="Nome" required value="<%= locals.formData?.name %>">
+      <input type="email" name="email" placeholder="Email" required value="<%= locals.formData?.email %>">
+      <input type="password" name="password" placeholder="Senha" required value="<%= locals.formData?.password %>">
+    </div>
+    <% if (locals.error) { %>
+      <div>Já existe uma conta com este email</div>
+    <% } %>
+    <div class="submit">
+      <button type="submit">Criar</button>
+    </div>
+  </form>
+</div>

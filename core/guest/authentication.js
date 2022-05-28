@@ -1,10 +1,6 @@
 import { createMongoClient } from "../mongo.js"
-import { createHmac } from 'crypto';
 import jwt from 'jsonwebtoken';
-
-const hashMessage = (message) => {
-  return createHmac("sha512", process.env.SECRET).update(message).digest('hex');
-}
+import { hashMessage } from "../utils.js";
 
 const buildAccessToken = (guest) => {
   const token = { id: guest._id, now: new Date().toISOString() };
