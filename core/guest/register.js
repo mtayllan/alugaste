@@ -13,7 +13,7 @@ export const createAccount = async ({ name, email, password }) => {
     if (guest) return 'already_exists';
 
     const encryptedPassword = hashMessage(password);
-    const record = { name, email, password: encryptedPassword };
+    const record = { name, email, encrypted_password: encryptedPassword };
     await collection.insertOne(record);
   } finally {
     mongoClient.close();
