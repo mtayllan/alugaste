@@ -1,0 +1,24 @@
+<%- contentFor('pageHeaders') %>
+<link rel="stylesheet" href="/guest/stays/view.css">
+<title>Ver Minha Estadia</title>
+
+<%- contentFor('body') %>
+<div class="wrapper">
+  <h3>Sua estadia em <%= stay.room.name %></h3>
+  <img src="<%= stay.room.photo %>" alt="Vista do Chalé">
+  <p>
+    <%= stay.room.address %>
+    <br>
+    Data: <%= stay.start_date %> até <%= stay.end_date %>
+  </p>
+  <form>
+    <div class=form>
+      <div class="estrelas">
+        <% [1,2,3,4,5].forEach(star => { %>
+          <span class="fa fa-star <%= star <= stay.comment.stars ? 'checked' : '' %>"></span>
+        <% }) %>
+      </div>
+      <p><%= stay.comment.content %></p>
+    </div>
+  </form>
+</div>

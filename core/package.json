@@ -15,7 +15,7 @@
   },
   "homepage": "https://github.com/mtayllan/alugaste#readme",
   "dependencies": {
-  },
-  "devDependencies": {
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^4.6.0"
   }
 }
