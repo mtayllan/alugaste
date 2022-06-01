@@ -1,0 +1,19 @@
+[
+    {
+        "room":{
+            "name":"Hospedagem em João Pessoa",
+            "photo":"https://i.lugarcerto.com.br/N-OytwEf8rFVmNKpZ57QPCU2fTk=/295x215/imgs.carteira.lugarcerto.com.br/anuncio/lugarcerto/1/8/3/183bfea369e7c708192f24463793d58c/348545123_201311234_g.jpg",
+            "num_Guests":"4"
+            },
+        
+        "start_date": "01/07/2022",
+        "end_date": "08/07/2022",
+        "price": {
+            "per_night":10,
+            "nights":7,
+            "clean_tax":5,
+            "service_tax":3
+        }
+        
+    }
+]
