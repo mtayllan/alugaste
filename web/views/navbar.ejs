@@ -9,17 +9,18 @@
       <i class="fas fa-bars"></i>
     </label>
     <input type="checkbox" id="navbar-toggler" class="navbar-toggler-check">
-    <% if (locals.guestSignedIn) { %>
-      <nav class="navbar-menu">
+    <nav class="navbar-menu">
+      <% if (locals.guestSignedIn) { %>
         <a href="/guest/profile" class="navbar-link">Minha Conta</a>
         <a href="/guest/logout" class="navbar-link">Logout</a>
-      </nav>
-    <% } else { %>
-      <nav class="navbar-menu">
+      <% } else { %>
         <a href="/host/login" class="navbar-link">Seja um anfitrião</a>
         <a href="/guest/login" class="navbar-link">Entrar</a>
         <a href="/guest/register" class="navbar-link">Cadastre-se</a>
-      </nav>
-    <% } %>
+      <% } %>
+      <button type="button" onclick="changeTheme()">
+        <i class="fas fa-sun" id="theme-icon" ></i>
+      </button>
+    </nav>
   </div>
 </header>
