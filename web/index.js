@@ -1,5 +1,5 @@
 import express from 'express';
-import { getRooms } from 'alugaste-core/rooms.js';
+import { getRooms, getRoom } from 'alugaste-core/rooms.js';
 import { getHost } from 'alugaste-core/hosts.js'
 
 const app = express()
@@ -17,6 +17,11 @@ app.get('/', (req, res) => {
 app.get('/hosts/:id', (req, res) => {
   const host = getHost(req.params.id);
   res.render('host_profile', { host })
+})
+
+app.get('/rooms/:id', (req, res) => {
+  const room = getRoom(req.params.id);
+  res.render('room', { room })
 })
 
 app.listen(port, () => {

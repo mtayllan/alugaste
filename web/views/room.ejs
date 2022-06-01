@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= room.name %></title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../room.css">
+</head>
+
+<body>
+  <header class="navbar">
+    <div class="navbar-inner">
+      <h1 class="nav-logo">
+        <a href="" class="logo-link">
+          <img src="../logo_alugaste.jpg" alt="Dois telhados">
+        </a>
+      </h1>
+      <label for="navbar-toggler" class="navbar-toggler">
+        <i class="fas fa-bars"></i>
+      </label>
+      <input type="checkbox" id="navbar-toggler" class="navbar-toggler-check">
+      <nav class="navbar-menu">
+        <a href="" class="navbar-link">Pesquisar</a>
+        <a href="" class="navbar-link">Seja um anfitrião</a>
+        <a href="" class="navbar-link">Entrar</a>
+        <a href="" class="navbar-link">Cadastre-se</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrapper">
+    <h2><%= room.name %></h2>
+    <p><%= room.address %></p>
+    <div class="gallery">
+      <div class="main">
+        <img src="<%= room.main_photo %>" alt="Sala de estar 1">
+      </div>
+      <div class="others">
+        <% room.photos.forEach(photo => { %>
+          <div>
+            <img src="<%= photo %>" alt="Quarto 1" />
+          </div>
+        <% }) %>
+      </div>
+    </div>
+    <div class="description">
+      <ul>
+        <li><%= room.maxGuests %> hóspedes</li>
+        <li><%= room.roomAmount %> quartos</li>
+        <li><%= room.bedAmount %> camas</li>
+        <li><%= room.bathroomAmount %> banheiros</li>
+        <% if(room.hasWifi) { %>
+          <li>WI-FI</li>
+        <% } %>
+      </ul>
+    </div>
+    <hr>
+    <div class="rent">
+      <h3>R$ <%= room.price %>/noite</h3>
+      <form>
+        <div class="form-input">
+          <label for="counter">Nº Hóspedes</label>
+          <input type="number" name="counter" id="counter">
+        </div>
+        <div class="form-input">
+          <label for="checkin">Check-in</label>
+          <input type="date" name="checkin" id="checkin">
+        </div>
+        <div class="form-input">
+          <label for="checkout">Check-out</label>
+          <input type="date" name="checkout" id="checkout">
+        </div>
+        <button type="submit">Fazer reserva</button>
+      </form>
+    </div>
+    <hr>
+    <h3>Avaliações (<%= room.reviewMean %> ⭐)</h3>
+    <div class="comments">
+      <% room.comments.forEach(comment => { %>
+        <div class="comment">
+          <div class="header">
+            <div class="picture">
+              <img src="<%= comment.guest.photo %>" alt="Cliente 1"/>
+            </div>
+            <div class="info">
+              <div><%= comment.guest.name %></div>
+              <div><%= comment.stay.date %></div>
+            </div>
+          </div>
+          <div class="text">
+            <%= comment.body %>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+</body>
+
+</html>

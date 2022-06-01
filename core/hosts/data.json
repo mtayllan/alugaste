@@ -5,7 +5,48 @@
     "name": "Matilda Lopes",
     "reviewMean": 4.5,
     "commentAmount": 12,
-    "address": "Fortaleza, Ceará"
+    "address": "Fortaleza, Ceará",
+    "rooms": [
+      {
+        "photo": "https://a0.muscache.com/im/pictures/2de2fb4c-50b2-4771-979e-4980153f92d8.jpg",
+        "name": "Flat em João Pessoa",
+        "reviewMean": 4.7
+      },
+      {
+        "photo": "https://a0.muscache.com/im/pictures/2de2fb4c-50b2-4771-979e-4980153f92d8.jpg",
+        "name": "Flat em Recife",
+        "reviewMean": 4.7
+      },
+      {
+        "photo": "https://a0.muscache.com/im/pictures/2de2fb4c-50b2-4771-979e-4980153f92d8.jpg",
+        "name": "Flat em João Pessoa",
+        "reviewMean": 4.7
+      }
+    ],
+    "comments": [
+      {
+        "guest": {
+          "name": "Magda Joer",
+          "photo": "https://static01.nyt.com/images/2019/11/17/books/review/17Salam/Salam1-superJumbo.jpg"
+        },
+        "stay": {
+          "date": "Julho de 2021"
+        },
+        "review": 4.8,
+        "body": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed commodo, magna sed luctus ullamcorper, nunc."
+      },
+      {
+        "guest": {
+          "name": "Magnólia Lopes",
+          "photo": "https://images.unsplash.com/photo-1611432579402-7037e3e2c1e4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y29ycG9yYXRlJTIwd29tYW58ZW58MHx8MHx8&w=1000&q=80"
+        },
+        "stay": {
+          "date": "Agosto de 2020"
+        },
+        "review": 4.8,
+        "body": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed commodo, magna sed luctus ullamcorper, nunc."
+      }
+    ]
   },
   {
     "id": 2,
@@ -13,6 +54,26 @@
     "name": "Magda Lopes",
     "reviewMean": 4.8,
     "commentAmount": 200,
-    "address": "Recife, Pernambuco"
+    "address": "Recife, Pernambuco",
+    "rooms": [
+      {
+        "photo": "https://a0.muscache.com/im/pictures/2de2fb4c-50b2-4771-979e-4980153f92d8.jpg",
+        "name": "Flat em João Pessoa",
+        "reviewMean": 4.7
+      }
+    ],
+    "comments": [
+      {
+        "guest": {
+          "name": "Magda Joer",
+          "photo": "https://images.unsplash.com/photo-1611432579402-7037e3e2c1e4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y29ycG9yYXRlJTIwd29tYW58ZW58MHx8MHx8&w=1000&q=80"
+        },
+        "stay": {
+          "date": "Julho de 2021"
+        },
+        "review": 4.8,
+        "body": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed commodo, magna sed luctus ullamcorper, nunc."
+      }
+    ]
   }
 ]

@@ -64,80 +64,20 @@
       <div id="house-list-card" class="card">
         <h2>Disponíveis</h2>
         <div class="row">
-          <div class="house-item-card card">
-            <div class="row">
-              <img src="https://a0.muscache.com/im/pictures/2de2fb4c-50b2-4771-979e-4980153f92d8.jpg" alt="gato"
-                class="house-pic">
-            </div>
-            <div class="left-row mt-1">
-              4.7 estrelas
-            </div>
-            <div class="left-row">
-              Flat em João Pessoa
-            </div>
-          </div>
-          <div class="house-item-card card">
-            <div class="row">
-              <img src="https://a0.muscache.com/im/pictures/2de2fb4c-50b2-4771-979e-4980153f92d8.jpg" alt="gato"
-                class="house-pic">
-            </div>
-            <div class="left-row mt-1">
-              4.7 estrelas
-            </div>
-            <div class="left-row">
-              Flat em João Pessoa
-            </div>
-          </div>
-          <div class="house-item-card card">
-            <div class="row">
-              <img src="https://a0.muscache.com/im/pictures/2de2fb4c-50b2-4771-979e-4980153f92d8.jpg" alt="gato"
-                class="house-pic">
-            </div>
-            <div class="left-row mt-1">
-              4.7 estrelas
-            </div>
-            <div class="left-row">
-              Flat em João Pessoa
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="house-item-card card">
-            <div class="row">
-              <img src="https://a0.muscache.com/im/pictures/2de2fb4c-50b2-4771-979e-4980153f92d8.jpg" alt="gato"
-                class="house-pic">
-            </div>
-            <div class="left-row mt-1">
-              4.7 estrelas
-            </div>
-            <div class="left-row">
-              Flat em João Pessoa
-            </div>
-          </div>
-          <div class="house-item-card card">
-            <div class="row">
-              <img src="https://a0.muscache.com/im/pictures/2de2fb4c-50b2-4771-979e-4980153f92d8.jpg" alt="gato"
-                class="house-pic">
-            </div>
-            <div class="left-row mt-1">
-              4.7 estrelas
-            </div>
-            <div class="left-row">
-              Flat em João Pessoa
-            </div>
-          </div>
-          <div class="house-item-card card">
-            <div class="row">
-              <img src="https://a0.muscache.com/im/pictures/2de2fb4c-50b2-4771-979e-4980153f92d8.jpg" alt="gato"
-                class="house-pic">
-            </div>
-            <div class="left-row mt-1">
-              4.7 estrelas
-            </div>
-            <div class="left-row">
-              Flat em João Pessoa
-            </div>
-          </div>
+          <% host.rooms.forEach(room => { %>
+            <div class="house-item-card card">
+              <div class="row">
+                <img src="<%= room.photo %>" alt="gato"
+                  class="house-pic">
+              </div>
+              <div class="left-row mt-1">
+                <%= room.reviewMean %> estrelas
+              </div>
+              <div class="left-row">
+                <%= room.name %>
+              </div>
+            </div>  
+          <% }) %>
         </div>
         <div class="row mt-1">
           <button>Carregar mais</button>
@@ -149,39 +89,23 @@
     <div id="comments-row">
       <div id="comments-box" class="card">
         <h2>Comentários</h2>
-        <div class="comment-card card">
-          <div class="guest-info">
-            <div class="guest-icon">
-              <img src="https://static01.nyt.com/images/2019/11/17/books/review/17Salam/Salam1-superJumbo.jpg"
-                alt="gato" class="guest-icon-image">
+        <% host.comments.forEach(comment => { %>
+          <div class="comment-card card">
+            <div class="guest-info">
+              <div class="guest-icon">
+                <img src="<%= comment.guest.photo %>"
+                  alt="ícone" class="guest-icon-image">
+              </div>
+              <div class="stay-and-guest-info">
+                <div class="guest-name"><%= comment.guest.name %>, <%= comment.review %> estrelas</div>
+                <div class="guest-stay">Ficou em <%= comment.stay.date %></div>
+              </div>
             </div>
-            <div class="stay-and-guest-info">
-              <div class="guest-name">Magda Joer, 4.8 estrelas</div>
-              <div class="guest-stay">Ficou em Flat em Julho de 2021</div>
+            <div class="comment-text">
+              <%= comment.body %>
             </div>
-          </div>
-          <div class="comment-text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed commodo, magna sed luctus
-            ullamcorper, nunc.
-          </div>
-        </div>
-        <div class="comment-card card">
-          <div class="guest-info">
-            <div class="guest-icon">
-              <img
-                src="https://images.unsplash.com/photo-1611432579402-7037e3e2c1e4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y29ycG9yYXRlJTIwd29tYW58ZW58MHx8MHx8&w=1000&q=80"
-                alt="gato" class="guest-icon-image">
-            </div>
-            <div class="stay-and-guest-info">
-              <div class="guest-name">Magnólia Lopes, 4.8 estrelas</div>
-              <div class="guest-stay">Ficou em Flat em Julho de 2021</div>
-            </div>
-          </div>
-          <div class="comment-text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed commodo, magna sed luctus
-            ullamcorper, nunc.
-          </div>
-        </div>
+          </div>  
+        <% }) %>
         <div class="row mt-1">
           <button>Carregar mais</button>
         </div>

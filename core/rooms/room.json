@@ -1,0 +1,62 @@
+[
+    {
+      "id": 1,
+      "main_photo": "https://a0.muscache.com/im/pictures/miso/Hosting-51764150/original/d04552e8-5894-4763-a154-7fcee436a816.jpeg?im_w=1200",
+      "photos": [
+          "https://a0.muscache.com/im/pictures/miso/Hosting-51764150/original/038e0998-b036-48b0-bb2a-aa8153264c20.jpeg?im_w=720",
+          "https://a0.muscache.com/im/pictures/miso/Hosting-51764150/original/a0cf689a-6cc7-44e6-88e8-fe63f99fcd87.jpeg?im_w=1200",
+          "https://a0.muscache.com/im/pictures/miso/Hosting-51764150/original/c0c26fb9-25e6-40c6-adac-cf9985606c01.jpeg?im_w=720"
+      ],
+      "name": "Apto Com AR e Elevador Perto da UFU",
+      "address": "Santa Mônica, Minas Gerais, Brasil",
+      "maxGuests": 4,
+      "roomAmount": 2,
+      "bedAmount": 3,
+      "bathroomAmount": 2,
+      "hasWifi": true,
+      "price": 300,
+      "reviewMean": 4.8,
+      "comments": [
+        {
+          "guest": {
+            "name": "Flávio",
+            "photo": "https://a0.muscache.com/im/pictures/user/63c54fc4-0009-402c-ad2d-bf2b86bc5384.jpg?im_w=240"
+          },
+          "stay": {
+            "date": "Novembro de 2021"
+          },
+          "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae justo metus. Mauris congue non mauris porttitor eleifend. Suspendisse ac vestibulum purus. Vivamus pulvinar ligula non ligula porttitor accumsan."
+        },
+        {
+          "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae justo metus. Mauris congue non mauris porttitor eleifend. Suspendisse ac vestibulum purus. Vivamus pulvinar ligula non ligula porttitor accumsan.",
+          "guest": {
+            "name": "Driele",
+            "photo": "https://a0.muscache.com/im/pictures/user/38a47f61-4707-4226-a632-fcd0bfae06dd.jpg?im_w=240"
+          },
+          "stay": {
+            "date": "Novembro de 2021"
+          }
+        },
+        {
+          "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae justo metus. Mauris congue non mauris porttitor eleifend. Suspendisse ac vestibulum purus. Vivamus pulvinar ligula non ligula porttitor accumsan.",
+          "guest": {
+            "name": "Caroline",
+            "photo": "https://a0.muscache.com/im/pictures/user/6329df98-e9b7-4df4-b390-5027b074f1d0.jpg?im_w=240"
+          },
+          "stay": {
+            "date": "Novembro de 2021"
+          }
+        },
+        {
+          "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae justo metus. Mauris congue non mauris porttitor eleifend. Suspendisse ac vestibulum purus. Vivamus pulvinar ligula non ligula porttitor accumsan.",
+          "guest": {
+            "name": "Jober",
+            "photo": "https://a0.muscache.com/im/pictures/user/0121a195-e5e1-422f-9aad-e0411dae0ee0.jpg?im_w=240"
+          },
+          "stay": {
+            "date": "Novembro de 2021"
+          }
+        }
+      ]
+    }
+]
