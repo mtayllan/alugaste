@@ -9,6 +9,7 @@ import * as hostLogin from './actions/host/login.js';
 import * as guestLogin from './actions/guest/login.js';
 import * as guestRegister from './actions/guest/register.js';
 import * as guestLogout from './actions/guest/logout.js';
+import * as guestStays from './actions/guest/stays.js';
 
 const app = express();
 const port = 3000;
@@ -36,6 +37,7 @@ app.post('/guest/login', guestLogin.postLogin);
 app.get('/guest/logout', guestLogout.getLogout);
 app.get('/guest/register', guestRegister.getRegister)
 app.post('/guest/register', guestRegister.postRegister)
+app.get('/guest/stays/view', guestStays.getStay);
 
 
 app.listen(port, () => {
