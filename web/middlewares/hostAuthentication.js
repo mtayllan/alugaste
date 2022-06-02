@@ -13,6 +13,8 @@ export const hostAuthentication = async (req, res, next) => {
     if (result !== 'invalid_token') {
       req.hostSignedIn = true;
       req.currentHost = result;
+      res.locals.hostSignedIn = true;
+      res.locals.currentHost = result;
     } else {
       clearAuthentication(req, res);
     }

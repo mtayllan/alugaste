@@ -1,0 +1,29 @@
+<%- contentFor('pageHeaders') %>
+<link rel="stylesheet" href="host_register.css">
+<title>Cadastro Anfitrião</title>
+
+<%- contentFor('body') %>
+<div class="wrapper card">
+  <h2>Faça seu cadastro</h2>
+    <form class="form-info" action="/host/register" method="post">
+      <input type="text" name="name" id="name" placeholder="Nome" required value="<%= locals.formData?.name %>">
+      <input type="email" name="email" placeholder="Email" required value="<%= locals.formData?.email %>">
+      <input type="password" name="password" placeholder="Senha" required>
+      <input type="date" name="birthdate" required value="<%= locals.formData?.birthdate %>">
+      <input type="text" name="address" placeholder="Endereço" required value="<%= locals.formData?.address %>">
+
+      <div class="upload">
+        <label for="profile_picture">Envie sua foto</label>
+        <input type="file" name="profile_picture" id="profile_picture">
+      </div>
+
+      <% if (locals.error) { %>
+        <div>Já existe uma conta com este email</div>
+      <% } %>
+
+      <div class="submit">
+        <button type="submit">Cadastrar</button>
+      </div>
+    </form>
+
+</div>

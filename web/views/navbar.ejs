@@ -13,6 +13,9 @@
       <% if (locals.guestSignedIn) { %>
         <a href="/guest/profile" class="navbar-link">Minha Conta</a>
         <a href="/guest/logout" class="navbar-link">Logout</a>
+      <% } else if (locals.hostSignedIn) { %>
+        <a href="/host/profile" class="navbar-link">Minha Conta</a>
+        <a href="/guest/logout" class="navbar-link">Logout</a>
       <% } else { %>
         <a href="/host/login" class="navbar-link">Seja um anfitrião</a>
         <a href="/guest/login" class="navbar-link">Entrar</a>
