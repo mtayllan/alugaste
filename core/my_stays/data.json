@@ -1,0 +1,32 @@
+[
+    {
+        "profile":{
+            "name": "Messias Tayllan",
+            "email": "messiastayllan@gmail.com",
+            "phone":"(85) 9 9999-9991",
+            "photo": "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80"
+        },
+        "stays":[
+            {
+            "name":"FLAT COM VISTA INCRÍVEL EM FORTALEZA",
+            "date":"abril de 2021",
+            "host":"Michele",
+            "photo":"https://a0.muscache.com/im/pictures/66e3b0b9-4b04-4b2d-888b-e35d26bfea23.jpg?im_w=1200"
+            },
+            {
+            "name":"APARTAMENTO 1505 STUDIO IRACEMA VISTA PARA O MAR",
+            "date":"novembro de 2021",
+            "host":"Andrea",
+            "photo":"https://a0.muscache.com/im/pictures/2de2fb4c-50b2-4771-979e-4980153f92d8.jpg?im_w=960"
+                },
+            {
+            "name":"Dunlap Hollow A-Frame",
+            "date":"fevereiro de 2022",
+            "host":"Bryan",
+            "photo":"https://a0.muscache.com/im/pictures/prohost-api/Hosting-48509375/original/0862735b-4abc-4d87-a8d1-f2fb6053adc8.jpeg?im_w=960"
+            }
+        ]
+
+
+    }
+]

@@ -1,0 +1,55 @@
+<%- contentFor('pageHeaders') %>
+<link rel="stylesheet" href="/my_stays.css">
+<title>Minhas Estadias</title>
+<%- contentFor('body') %>
+  <div class="wrapper">
+    <div class="profile">
+      <div class="picture">
+        <img src="<%= my_stays.profile.photo %>"/>
+      </div>
+      <div class="informations">
+        <div><%= my_stays.profile.name %></div>
+        <div><%= my_stays.profile.email %></div>
+        <div><%= my_stays.profile.phone %></div>
+      </div>
+    </div>
+    <div class="stays">
+      <h3>Minhas estadias</h3>
+      <div class="stay-container">
+        <div class="informations">
+          <div class="name"><%= my_stays.stays[0].name %></div>
+          <div><%= my_stays.stays[0].date %></div>
+          <div>Hospedado por <%= my_stays.stays[0].host %></div>
+        </div>
+        <div class="actions">
+          <img src="<%= my_stays.stays[0].photo %>" alt="Hospedagem 1"/>
+          <button>Ver mais</button>
+        </div>
+      </div>
+      <div class="stay-container">
+        <div class="informations">
+          <div class="name"><%= my_stays.stays[1].name %></div>
+          <div>Em <%= my_stays.stays[1].date %></div>
+          <div>Hospedado por <%= my_stays.stays[1].host %></div>
+        </div>
+        <div class="actions">
+          <img src="<%= my_stays.stays[1].photo %>" alt="Hospedagem 2"/>
+          <button>Ver mais</button>
+        </div>
+      </div>
+      <div class="stay-container">
+        <div class="informations">
+          <div class="name"><%= my_stays.stays[2].name %></div>
+          <div>Em <%= my_stays.stays[2].date %></div>
+          <div>Hospedado por <%= my_stays.stays[2].host %></div>
+        </div>
+        <div class="actions">
+          <img src="<%= my_stays.stays[2].photo %>" alt="Hospedagem 3" />
+          <button>Ver mais</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
