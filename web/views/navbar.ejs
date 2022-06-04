@@ -15,11 +15,11 @@
         <a href="/guest/logout" class="navbar-link">Logout</a>
       <% } else if (locals.hostSignedIn) { %>
         <a href="/host/profile" class="navbar-link">Minha Conta</a>
-        <a href="/guest/logout" class="navbar-link">Logout</a>
+        <a href="/host/logout" class="navbar-link">Logout</a>
       <% } else { %>
         <a href="/host/login" class="navbar-link">Seja um anfitrião</a>
         <a href="/guest/login" class="navbar-link">Entrar</a>
-        <a href="/guest/register" class="navbar-link">Cadastre-se</a>
+        <a href="/guest/register" class="navbar-link">Criar conta</a>
       <% } %>
       <button type="button" onclick="changeTheme()">
         <i class="fas fa-sun" id="theme-icon" ></i>

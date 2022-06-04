@@ -7,6 +7,7 @@ import cookieParser from 'cookie-parser';
 import { hostAuthentication } from './middlewares/hostAuthentication.js';
 import { guestAuthentication } from './middlewares/guestAuthentication.js';
 import * as hostLogin from './actions/host/login.js';
+import * as hostLogout from './actions/host/logout.js';
 import * as hostRegister from './actions/host/register.js';
 import * as guestLogin from './actions/guest/login.js';
 import * as guestRegister from './actions/guest/register.js';
@@ -44,6 +45,7 @@ app.get('/rooms/:id', (req, res) => {
 
 app.get('/host/login', hostLogin.getLogin);
 app.post('/host/login', hostLogin.postLogin);
+app.get('/host/logout', hostLogout.getLogout);
 app.get('/host/register', hostRegister.getRegister);
 app.post('/host/register', hostRegister.postRegister);
 
