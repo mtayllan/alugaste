@@ -8,6 +8,7 @@
   <form action="/guest/register" method="post">
     <div class="Form">
       <input type="text" name="name" placeholder="Nome" required value="<%= locals.formData?.name %>">
+      <input type="tel" name="phone" placeholder="Telefone" required value="<%= locals.formData?.phone %>">
       <input type="email" name="email" placeholder="Email" required value="<%= locals.formData?.email %>">
       <input type="password" name="password" placeholder="Senha" required value="<%= locals.formData?.password %>">
     </div>
