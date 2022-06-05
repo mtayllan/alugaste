@@ -38,6 +38,11 @@ app.get('/hosts/:id', (req, res) => {
   res.render('host_profile', { host })
 })
 
+app.get('/host/profile', (req, res) => {
+  const host = getHost(null, req);
+  res.render('host_profile', { host })
+})
+
 app.get('/rooms/:id', (req, res) => {
   const room = getRoom(req.params.id);
   res.render('room', { room })
