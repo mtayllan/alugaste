@@ -1,40 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- contentFor('pageHeaders') %>
+<title><%= room.name %></title>
+<link rel="stylesheet" href="../room.css">
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= room.name %></title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
-  <link rel="stylesheet" href="../styles.css">
-  <link rel="stylesheet" href="../room.css">
-</head>
 
-<body>
-  <header class="navbar">
-    <div class="navbar-inner">
-      <h1 class="nav-logo">
-        <a href="" class="logo-link">
-          <img src="../logo_alugaste.jpg" alt="Dois telhados">
-        </a>
-      </h1>
-      <label for="navbar-toggler" class="navbar-toggler">
-        <i class="fas fa-bars"></i>
-      </label>
-      <input type="checkbox" id="navbar-toggler" class="navbar-toggler-check">
-      <nav class="navbar-menu">
-        <a href="" class="navbar-link">Pesquisar</a>
-        <a href="" class="navbar-link">Seja um anfitrião</a>
-        <a href="" class="navbar-link">Entrar</a>
-        <a href="" class="navbar-link">Cadastre-se</a>
-      </nav>
-    </div>
-  </header>
-
+<%- contentFor('body') %>
   <div class="wrapper">
     <h2><%= room.name %></h2>
     <p><%= room.address %></p>
@@ -101,6 +70,3 @@
       <% }) %>
     </div>
   </div>
-</body>
-
-</html>

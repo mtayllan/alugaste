@@ -1,0 +1,73 @@
+<%- contentFor('pageHeaders') %>
+<link rel="stylesheet" href="../cadastrar_imovel.css">
+<title>Cadastrar imóvel</title>
+
+<%- contentFor('body') %>
+<div class="wrapper card">
+  <h2>Faça o cadastro do seu imóvel</h2>
+
+  <form action="/rooms" method="post">
+    <div class="form-container">
+      <div class="form-info">
+        <input type="text" name="name" id="name" placeholder="Nome" required>
+        <input type="text" name="address" placeholder="Endereço" required>
+        <textarea name="descripition" id="descripition" cols="15" rows="5" placeholder="Descrição"
+          required></textarea>
+        <input type="number" min="1" max="50" name="totalRooms" placeholder="Nº de quartos" required>
+        <input type="number" min="1" max="50" name="totalBathrooms" placeholder="Nº de banheiros" required>
+        <input type="number" min="1" max="50" name="totalBeds" placeholder="Nº de camas" required>
+        <input type="number" min="1" max="50" name="maxGuests" placeholder="Nº de hóspedes" required>
+        <input type="number" name="pricePerNight" placeholder="Preço por noite (R$)" required>
+        <input type="number" min="1" max="50" name="minNights" placeholder="Mínimo de noites">
+        <input type="number" min="1" max="50" name="maxNights" placeholder="Máximo de noites">
+        <div class="form-grid-checkbox">
+          <div class="div-checkbox">
+            <input class="input-radio" type="checkbox" name="others[cafe]" id="cafe" value="cafe">
+            <label for="cafe">Café da manhã</label>
+          </div>
+          <div class="div-checkbox">
+            <input class="input-radio" type="checkbox" name="others[wifi]" id="wifi" value="wifi">
+            <label for="wifi">Wi-fi</label>
+          </div>
+          <div class="div-checkbox">
+            <input class="input-radio" type="checkbox" name="others[praia]" id="praia" value="praia">
+            <label for="praia">Perto da praia</label>
+          </div>
+          <div class="div-checkbox">
+            <input class="input-radio" type="checkbox" name="others[tv]" id="tv" value="tv">
+            <label for="tv">Tv</label>
+          </div>
+          <div class="div-checkbox">
+            <input class="input-radio" type="checkbox" name="others[cozinha]" id="cozinha" value="Cozinha">
+            <label for="cozinha">Cozinha</label>
+          </div>
+          <div class="div-checkbox">
+            <input class="input-radio" type="checkbox" name="others[piscina]" id="piscina" value="Piscina">
+            <label for="piscina">Piscina</label>
+          </div>
+        </div>
+      </div>
+      <div class="upload">
+        <div class="container-img">
+          <img
+            src="https://plantasdecasas.com/wp-content/webpc-passthru.php?src=https://plantasdecasas.com/wp-content/uploads/2013/04/house_102_fix_800-1-700x422.jpg&nocache=1"
+            alt="">
+          <img
+            src="https://plantasdecasas.com/wp-content/webpc-passthru.php?src=https://plantasdecasas.com/wp-content/uploads/2013/04/102-Projetos-de-casas-vista-direita-800-1.jpg&nocache=1"
+            alt="">
+          <img
+            src="https://plantasdecasas.com/wp-content/webpc-passthru.php?src=https://plantasdecasas.com/wp-content/uploads/2013/04/102-Plantas-de-Casas-vista-esquerda-800px-1.jpg&nocache=1"
+            alt="">
+          <img
+            src="https://plantasdecasas.com/wp-content/webpc-passthru.php?src=https://plantasdecasas.com/wp-content/uploads/2013/04/house_102_fix_800-1-700x422.jpg&nocache=1"
+            alt="">
+        </div>
+        <label for="profile_picture">Envie fotos do seu imóvel</label>
+        <input type="file" name="profile_picture" id="profile_picture" multiple="multiple">
+      </div>
+    </div>
+    <div class="submit">
+      <button type="submit">Cadastrar</button>
+    </div>
+  </form>
+</div>

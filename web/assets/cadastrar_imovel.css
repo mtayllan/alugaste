@@ -1,0 +1,86 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  width: 80%;
+  margin: 0 auto;
+  transition: 0.3s;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.form-grid {
+  width: 35vw;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.form-grid-checkbox {
+  width: 35vw;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.div-checkbox {
+  display: flex;
+  align-items: center;
+}
+
+.input-radio {
+  background-color: initial;
+  cursor: default;
+  appearance: auto;
+  box-sizing: border-box;
+  margin-right: 4px;
+  padding: initial;
+  width: 1vw;
+  border: initial;
+}
+
+.wrapper:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.wrapper h2 {
+  text-align: center;
+}
+
+.container-img {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.form-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.upload {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.upload img {
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+  flex: 1 1 45%;
+}
+
+.submit {
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (min-width: 720px) {
+  .form-container {
+    flex-direction: row;
+  }
+}
