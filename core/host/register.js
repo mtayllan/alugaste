@@ -2,7 +2,7 @@ import { createMongoClient } from "../mongo.js"
 import { hashMessage } from '../utils.js';
 import { login } from './authentication.js'
 
-export const createAccount = async ({ name, birthdate, email, password }) => {
+export const createAccount = async ({ name, birthdate, address, email, password }) => {
   const mongoClient = createMongoClient();
 
   try {
@@ -13,7 +13,7 @@ export const createAccount = async ({ name, birthdate, email, password }) => {
     if (guest) return 'already_exists';
 
     const encryptedPassword = hashMessage(password);
-    const record = { name, birthdate, email, encrypted_password: encryptedPassword };
+    const record = { name, birthdate, address, email, encrypted_password: encryptedPassword };
     await collection.insertOne(record);
   } finally {
     mongoClient.close();

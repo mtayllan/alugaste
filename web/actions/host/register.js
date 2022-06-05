@@ -9,7 +9,7 @@ export const getRegister = (req, res) => {
 }
 
 export const postRegister = async (req, res) => {
-  const formData = { name: req.body.name, birthdate: req.body.birthdate, email: req.body.email, password: req.body.password };
+  const formData = { name: req.body.name, birthdate: req.body.birthdate, address: req.body.address, email: req.body.email, password: req.body.password };
   const response = await createAccount(formData);
   if (response === 'already_exists') {
     res.render('host/register', { error: true, formData })
