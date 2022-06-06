@@ -1,16 +1,40 @@
 import { readFileSync } from 'fs';
 import { createMongoClient } from "../mongo.js"
+import { ObjectId } from "mongodb";
 
-export const getRooms = () => {
-  const rawdata = readFileSync(new URL('./data.json', import.meta.url));
-  const rooms = JSON.parse(rawdata);
-  return rooms;
+export const getRoom = async (id) => {
+  const mongoClient = createMongoClient();
+
+  try {
+    await mongoClient.connect();
+    const query = { _id: ObjectId(id) };
+    const collection = mongoClient.db('alugaste').collection('rooms');
+    const room = await collection.findOne(query);
+    return room;
+  } finally {
+    mongoClient.close();
+  }
 }
 
-export const getRoom = (id) => {
-  const rawdata = readFileSync(new URL('./room.json', import.meta.url));
-  const rooms = JSON.parse(rawdata);
-  return rooms.find(data => data.id == id);;
+export const getRooms = async (host_id) => {
+  const mongoClient = createMongoClient();
+
+  try {
+    await mongoClient.connect();
+
+    const collection = mongoClient.db('alugaste').collection('rooms');
+
+    if (host_id) {
+      const query = { host: ObjectId(host_id) };
+      const rooms = await collection.find(query);
+      return rooms;
+    } else {
+      const rooms = await collection.find().toArray();
+      return rooms;
+    }
+  } finally {
+    mongoClient.close();
+  }
 }
 
 export const createRoom = async ({ maxGuests, totalBathrooms, totalRooms, totalBeds, others, pricePerNight, minNights, maxNights, host }) => {

@@ -1,6 +1,5 @@
 import 'dotenv/config'
 import express from 'express';
-import { getRooms, getRoom } from 'alugaste-core/rooms/rooms.js';
 import { getHost } from 'alugaste-core/hosts.js'
 import expressLayouts from 'express-ejs-layouts';
 import cookieParser from 'cookie-parser';
@@ -29,10 +28,7 @@ app.use(cookieParser());
 app.use(hostAuthentication);
 app.use(guestAuthentication);
 
-app.get('/', (req, res) => {
-  const rooms = getRooms();
-  res.render('index', { rooms })
-})
+app.get('/', roomActions.fetchRooms)
 
 app.get('/hosts/:id', (req, res) => {
   const host = getHost(req.params.id);
@@ -46,11 +42,6 @@ app.get('/host/profile', (req, res) => {
 
 app.get('/rooms/new', (req, res) => {
   res.render('rooms/form')
-})
-
-app.get('/rooms/:id', (req, res) => {
-  const room = getRoom(req.params.id);
-  res.render('rooms/room', { room })
 })
 
 app.get('/host/login', hostLogin.getLogin);
@@ -69,7 +60,8 @@ app.get('/guest/stays/view', guestStays.getStay);
 app.get('/book_stay/view',bookStays.getBookStay);
 app.get('/my_stays/view',myStays.getMyStays);
 
-app.post('/rooms', roomActions.postRoom)
+app.post('/rooms', roomActions.postRoom);
+app.get('/rooms/:id', roomActions.fetchRoom);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

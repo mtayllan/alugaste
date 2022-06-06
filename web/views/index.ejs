@@ -13,16 +13,18 @@
     <div class="container-imoveis">
       <% rooms.forEach(room => { %>
         <div class="imovel card">
-          <div class="img-imovel">
-            <img
-              src="<%= room.photo %>"
-              alt="">
-          </div>
-          <div class="info-imovel">
-            <h3><%= room.name %> (<%= room.reviewMean %>⭐)</h3>
-            <h4><%= room.address %></h4>
-            <h4><%= room.maxGuests %> hospedes</h4>
-          </div>
+          <a href="/rooms/<%= room._id %>">
+            <div class="img-imovel">
+              <img
+                src="<%= room.photo %>"
+                alt="">
+            </div>
+            <div class="info-imovel">
+              <h3><%= room.name %> (<%= room.reviewMean %>⭐)</h3>
+              <h4><%= room.address %></h4>
+              <h4><%= room.maxGuests %> hospedes</h4>
+            </div>
+          </a>
         </div>
       <% }) %>
     </div>

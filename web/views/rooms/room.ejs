@@ -12,7 +12,7 @@
         <img src="<%= room.main_photo %>" alt="Sala de estar 1">
       </div>
       <div class="others">
-        <% room.photos.forEach(photo => { %>
+        <% room.photos?.forEach(photo => { %>
           <div>
             <img src="<%= photo %>" alt="Quarto 1" />
           </div>
@@ -22,9 +22,9 @@
     <div class="description">
       <ul>
         <li><%= room.maxGuests %> hóspedes</li>
-        <li><%= room.roomAmount %> quartos</li>
-        <li><%= room.bedAmount %> camas</li>
-        <li><%= room.bathroomAmount %> banheiros</li>
+        <li><%= room.totalRooms %> quartos</li>
+        <li><%= room.totalBeds %> camas</li>
+        <li><%= room.totalBathrooms %> banheiros</li>
         <% if(room.hasWifi) { %>
           <li>WI-FI</li>
         <% } %>
@@ -32,7 +32,7 @@
     </div>
     <hr>
     <div class="rent">
-      <h3>R$ <%= room.price %>/noite</h3>
+      <h3>R$ <%= room.pricePerNight %>/noite</h3>
       <form>
         <div class="form-input">
           <label for="counter">Nº Hóspedes</label>
@@ -52,7 +52,7 @@
     <hr>
     <h3>Avaliações (<%= room.reviewMean %> ⭐)</h3>
     <div class="comments">
-      <% room.comments.forEach(comment => { %>
+      <% room.comments?.forEach(comment => { %>
         <div class="comment">
           <div class="header">
             <div class="picture">

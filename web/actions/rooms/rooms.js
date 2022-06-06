@@ -1,8 +1,6 @@
-import { createRoom } from 'alugaste-core/rooms/rooms.js'
+import { createRoom, getRooms, getRoom } from 'alugaste-core/rooms/rooms.js'
 
 export const postRoom = async (req, res) => {
-  console.log('estou em postroom')
-  console.log(req.body)
   const formData = {
     maxGuests: parseInt(req.body.maxGuests),
     totalBathrooms: parseInt(req.body.totalBathrooms),
@@ -17,4 +15,14 @@ export const postRoom = async (req, res) => {
 
   await createRoom(formData);
   res.redirect('/');
+}
+
+export const fetchRooms = async (_req, res) => {
+  const rooms = await getRooms();
+  res.render('index', { rooms })
+}
+
+export const fetchRoom = async (req, res) => {
+  const room = await getRoom(req.params.id);
+  res.render('rooms/room', { room })
 }
