@@ -15,20 +15,26 @@ export const getRoom = async (id) => {
   }
 }
 
-export const getRooms = async (host_id) => {
+export const getRooms = async (host_id, search) => {
   const mongoClient = createMongoClient();
 
   try {
     await mongoClient.connect();
 
     const collection = mongoClient.db('alugaste').collection('rooms');
+    let query = {}
+
+    if (search) {
+      query = { name: new RegExp(`${search}`) }
+    }
 
     if (host_id) {
-      const query = { host: ObjectId(host_id) };
+      query['host'] = ObjectId(host_id);
+
       const rooms = await collection.find(query).toArray();
       return rooms;
     } else {
-      const rooms = await collection.find().toArray();
+      const rooms = await collection.find(query).toArray();
       return rooms;
     }
   } finally {

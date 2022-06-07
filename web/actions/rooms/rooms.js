@@ -19,8 +19,8 @@ export const postRoom = async (req, res) => {
   res.redirect('/');
 }
 
-export const fetchRooms = async (_req, res) => {
-  const rooms = await getRooms();
+export const fetchRooms = async (req, res) => {
+  const rooms = await getRooms(null, req.query.search);
   res.render('index', { rooms })
 }
 
