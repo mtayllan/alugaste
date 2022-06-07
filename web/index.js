@@ -16,6 +16,8 @@ import * as bookStays from './actions/book_stay/book_stay.js';
 import * as myStays from './actions/my_stays/my_stays.js'
 import * as rooms from './actions/rooms.js';
 import * as hostActions from './actions/host/actions.js'
+import * as hostRooms from './actions/host/rooms.js';
+
 const app = express();
 const port = 3000;
 
@@ -29,28 +31,32 @@ app.use(cookieParser());
 app.use(hostAuthentication);
 app.use(guestAuthentication);
 
+// OPEN ROUTES
 app.get('/', rooms.getRooms)
 app.get('/rooms/:id', rooms.getRoom);
+app.get('/hosts/:id', hostActions.fetchHost)
 
+// HOST ROUTES
 app.get('/host/profile', (req, res) => {
   const host = getHost(null, req);
   res.render('host_profile', { host })
 })
 
-app.get('/rooms/new', (req, res) => {
-  res.render('rooms/form')
-})
-
 app.get('/host/login', hostLogin.getLogin);
 app.post('/host/login', hostLogin.postLogin);
 app.get('/host/logout', hostLogout.getLogout);
+
 app.get('/host/register', hostRegister.getRegister);
 app.post('/host/register', hostRegister.postRegister);
-app.post('/rooms', rooms.postRoom);
 
+app.get('/host/rooms/new', hostRooms.getNewRoom);
+app.post('/host/rooms', hostRooms.postRoom);
+
+// GUEST ROUTES
 app.get('/guest/login', guestLogin.getLogin);
 app.post('/guest/login', guestLogin.postLogin);
 app.get('/guest/logout', guestLogout.getLogout);
+
 app.get('/guest/register', guestRegister.getRegister)
 app.post('/guest/register', guestRegister.postRegister)
 
@@ -58,8 +64,6 @@ app.get('/guest/stays/view', guestStays.getStay);
 app.get('/book_stay/view',bookStays.getBookStay);
 app.get('/my_stays/view',myStays.getMyStays);
 
-
-app.get('/hosts/:id', hostActions.fetchHost)
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

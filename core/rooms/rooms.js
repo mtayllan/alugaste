@@ -56,7 +56,7 @@ export const createRoom = async ({ name, description, maxGuests, totalBathrooms,
     await mongoClient.connect();
     const collection = mongoClient.db('alugaste').collection('rooms');
 
-    const record = { name, description, maxGuests, totalBathrooms, totalRooms, totalBeds, others, pricePerNight, minNights, maxNights, host };
+    const record = { name, description, maxGuests, totalBathrooms, totalRooms, totalBeds, others, pricePerNight, minNights, maxNights, host_id: host, photos: [] };
     await collection.insertOne(record);
   } finally {
     mongoClient.close();
