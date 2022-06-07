@@ -2,6 +2,8 @@ import { createRoom, getRooms, getRoom } from 'alugaste-core/rooms/rooms.js'
 
 export const postRoom = async (req, res) => {
   const formData = {
+    name: req.body.name,
+    description: req.body.description,
     maxGuests: parseInt(req.body.maxGuests),
     totalBathrooms: parseInt(req.body.totalBathrooms),
     totalRooms: parseInt(req.body.totalRooms),

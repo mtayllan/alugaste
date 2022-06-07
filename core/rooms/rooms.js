@@ -36,14 +36,14 @@ export const getRooms = async (host_id) => {
   }
 }
 
-export const createRoom = async ({ maxGuests, totalBathrooms, totalRooms, totalBeds, others, pricePerNight, minNights, maxNights, host }) => {
+export const createRoom = async ({ name, description, maxGuests, totalBathrooms, totalRooms, totalBeds, others, pricePerNight, minNights, maxNights, host }) => {
   const mongoClient = createMongoClient();
 
   try {
     await mongoClient.connect();
     const collection = mongoClient.db('alugaste').collection('rooms');
 
-    const record = { maxGuests, totalBathrooms, totalRooms, totalBeds, others, pricePerNight, minNights, maxNights, host };
+    const record = { name, description, maxGuests, totalBathrooms, totalRooms, totalBeds, others, pricePerNight, minNights, maxNights, host };
     await collection.insertOne(record);
   } finally {
     mongoClient.close();
