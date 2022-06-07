@@ -1,4 +1,4 @@
-import { createRoom, getRooms, getRoom } from 'alugaste-core/rooms/rooms.js'
+import { createRoom, listRooms, findRoom } from 'alugaste-core/rooms/rooms.js'
 
 export const postRoom = async (req, res) => {
   const formData = {
@@ -19,12 +19,12 @@ export const postRoom = async (req, res) => {
   res.redirect('/');
 }
 
-export const fetchRooms = async (req, res) => {
-  const rooms = await getRooms(null, req.query.search);
+export const getRooms = async (req, res) => {
+  const rooms = await listRooms(null, req.query.search);
   res.render('index', { rooms })
 }
 
-export const fetchRoom = async (req, res) => {
-  const room = await getRoom(req.params.id);
-  res.render('rooms/room', { room })
+export const getRoom = async (req, res) => {
+  const room = await findRoom(req.params.id);
+  res.render('rooms/view', { room })
 }

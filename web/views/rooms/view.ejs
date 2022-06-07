@@ -9,12 +9,12 @@
     <p><%= room.address %></p>
     <div class="gallery">
       <div class="main">
-        <img src="<%= room.main_photo %>" alt="Sala de estar 1">
+        <img src="<%= room.photos[0] %>" alt="Sala de estar 1">
       </div>
       <div class="others">
-        <% room.photos?.forEach(photo => { %>
+        <% room.photos.slice(1).forEach((photo, index) => { %>
           <div>
-            <img src="<%= photo %>" alt="Quarto 1" />
+            <img src="<%= photo %>" alt="Foto acomodação" />
           </div>
         <% }) %>
       </div>
@@ -51,6 +51,9 @@
     </div>
     <hr>
     <h3>Avaliações (<%= room.reviewMean %> ⭐)</h3>
+    <% if (room.comments.length === 0) { %>
+      <p> Não há avaliações </p>
+    <% } %>
     <div class="comments">
       <% room.comments?.forEach(comment => { %>
         <div class="comment">
@@ -60,11 +63,11 @@
             </div>
             <div class="info">
               <div><%= comment.guest.name %></div>
-              <div><%= comment.stay.date %></div>
+              <div><%= `${comment.date.getMonth() + 1}/${comment.date.getFullYear()}` %></div>
             </div>
           </div>
           <div class="text">
-            <%= comment.body %>
+            <%= comment.content %>
           </div>
         </div>
       <% }) %>
