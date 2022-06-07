@@ -1,4 +1,3 @@
-import { readFileSync } from 'fs';
 import { createMongoClient } from "../mongo.js"
 import { ObjectId } from "mongodb";
 
@@ -26,7 +25,7 @@ export const getRooms = async (host_id) => {
 
     if (host_id) {
       const query = { host: ObjectId(host_id) };
-      const rooms = await collection.find(query);
+      const rooms = await collection.find(query).toArray();
       return rooms;
     } else {
       const rooms = await collection.find().toArray();

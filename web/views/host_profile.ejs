@@ -28,8 +28,8 @@
     <div id="house-list-card" class="card">
       <h2>Disponíveis</h2>
       <div class="row">
-        <% if (host?.rooms) { %>
-          <% host.rooms.forEach(room=> { %>
+        <% if (rooms) { %>
+          <% rooms.forEach(room=> { %>
             <div class="house-item-card card">
               <div class="row">
                 <img src="<%= room.photo %>" alt="gato" class="house-pic">

@@ -15,6 +15,7 @@ import * as guestStays from './actions/guest/stays.js';
 import * as bookStays from './actions/book_stay/book_stay.js';
 import * as myStays from './actions/my_stays/my_stays.js'
 import * as roomActions from './actions/rooms/rooms.js';
+import * as hostActions from './actions/host/actions.js'
 const app = express();
 const port = 3000;
 
@@ -29,11 +30,6 @@ app.use(hostAuthentication);
 app.use(guestAuthentication);
 
 app.get('/', roomActions.fetchRooms)
-
-app.get('/hosts/:id', (req, res) => {
-  const host = getHost(req.params.id);
-  res.render('host_profile', { host })
-})
 
 app.get('/host/profile', (req, res) => {
   const host = getHost(null, req);
@@ -62,6 +58,8 @@ app.get('/my_stays/view',myStays.getMyStays);
 
 app.post('/rooms', roomActions.postRoom);
 app.get('/rooms/:id', roomActions.fetchRoom);
+
+app.get('/hosts/:id', hostActions.fetchHost)
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
