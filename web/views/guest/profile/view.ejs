@@ -1,0 +1,35 @@
+<%- contentFor('pageHeaders') %>
+<link rel="stylesheet" href="/my_stays.css">
+<title>Minhas Estadias</title>
+<%- contentFor('body') %>
+<div class="wrapper">
+  <div class="profile">
+    <div class="picture">
+      <img src="<%= guest.photo %>"/>
+    </div>
+    <div class="informations">
+      <div><%= guest.name %></div>
+      <div><%= guest.email %></div>
+      <div><%= guest.phone %></div>
+    </div>
+  </div>
+  <div class="stays">
+    <h3>Minhas estadias</h3>
+    <% stays.forEach(stay => { %>
+      <div class="stay-container">
+        <div class="informations">
+          <div class="name"><%= stay.room.name %></div>
+          <div><%= stay.start_date.toLocaleDateString() %></div>
+          <div>Hospedado por <%= stay.room.host.name %></div>
+        </div>
+        <div class="actions">
+          <img src="data:image/png;base64, <%= stay.room.photos[0].toString('base64') %>" alt="Hospedagem 1"/>
+          <a href="/guest/stays/<%= stay._id %>">Ver mais</a>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+</div>
+
+
+

@@ -14,10 +14,10 @@ import * as guestRegister from './actions/guest/register.js';
 import * as guestLogout from './actions/guest/logout.js';
 import * as guestStays from './actions/guest/stays.js';
 import * as bookStays from './actions/book_stay/book_stay.js';
-import * as myStays from './actions/my_stays/my_stays.js'
 import * as rooms from './actions/rooms.js';
 import * as hostActions from './actions/host/actions.js'
 import * as hostRooms from './actions/host/rooms.js';
+import * as guestProfile from './actions/guest/profile.js';
 
 const app = express();
 const port = 3000;
@@ -60,9 +60,10 @@ app.get('/guest/logout', guestLogout.getLogout);
 app.get('/guest/register', guestRegister.getRegister)
 app.post('/guest/register', guestRegister.postRegister)
 
+app.get('/guest/profile', guestProfile.getProfile)
+
 app.get('/guest/stays/view', guestStays.getStay);
 app.get('/book_stay/view',bookStays.getBookStay);
-app.get('/my_stays/view',myStays.getMyStays);
 
 
 app.listen(port, () => {
