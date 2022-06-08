@@ -6,7 +6,7 @@
 <div class="wrapper card">
   <h2>Faça o cadastro do seu imóvel</h2>
 
-  <form action="/host/rooms" method="post">
+  <form action="/host/rooms" method="post" enctype="multipart/form-data">
     <div class="form-container">
       <div class="form-info">
         <input type="text" name="name" id="name" placeholder="Nome" required>
@@ -63,7 +63,7 @@
             alt="">
         </div>
         <label for="profile_picture">Envie fotos do seu imóvel</label>
-        <input type="file" name="profile_picture" id="profile_picture" multiple="multiple">
+        <input type="file" name="photos" id="profile_picture" multiple accept="image/*">
       </div>
     </div>
     <div class="submit">

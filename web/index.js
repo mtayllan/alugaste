@@ -3,6 +3,7 @@ import express from 'express';
 import { getHost } from 'alugaste-core/hosts.js'
 import expressLayouts from 'express-ejs-layouts';
 import cookieParser from 'cookie-parser';
+import multer from 'multer';
 import { hostAuthentication } from './middlewares/hostAuthentication.js';
 import { guestAuthentication } from './middlewares/guestAuthentication.js';
 import * as hostLogin from './actions/host/login.js';
@@ -20,6 +21,8 @@ import * as hostRooms from './actions/host/rooms.js';
 
 const app = express();
 const port = 3000;
+
+const upload = multer({ dest: 'uploads/', limits: { fileSize: 1024 * 1024 } })
 
 app.use(express.static('./web/assets'));
 app.set('view engine', 'ejs');
@@ -50,7 +53,7 @@ app.get('/host/register', hostRegister.getRegister);
 app.post('/host/register', hostRegister.postRegister);
 
 app.get('/host/rooms/new', hostRooms.getNewRoom);
-app.post('/host/rooms', hostRooms.postRoom);
+app.post('/host/rooms', upload.array('photos', 4), hostRooms.postRoom);
 
 // GUEST ROUTES
 app.get('/guest/login', guestLogin.getLogin);

@@ -1,5 +1,7 @@
 import { createMongoClient } from "../mongo.js"
 import { ObjectId } from "mongodb";
+import { readFileSync } from 'fs';
+import { Buffer } from 'buffer';
 
 const findRoomPipeline = (id) => (
   [
@@ -49,14 +51,15 @@ export const listRooms = async (hostId, search) => {
   }
 }
 
-export const createRoom = async ({ name, description, maxGuests, totalBathrooms, totalRooms, totalBeds, others, pricePerNight, minNights, maxNights, host }) => {
+export const createRoom = async ({ name, description, maxGuests, totalBathrooms, totalRooms, totalBeds, others, pricePerNight, minNights, maxNights, hostId, photos }) => {
   const mongoClient = createMongoClient();
 
   try {
     await mongoClient.connect();
     const collection = mongoClient.db('alugaste').collection('rooms');
 
-    const record = { name, description, maxGuests, totalBathrooms, totalRooms, totalBeds, others, pricePerNight, minNights, maxNights, host_id: host, photos: [] };
+    const photoBinaries = photos.map(photo => Buffer.from(readFileSync(photo.path)));
+    const record = { name, description, maxGuests, totalBathrooms, totalRooms, totalBeds, others, pricePerNight, minNights, maxNights, host_id: hostId, photos: photoBinaries };
     await collection.insertOne(record);
   } finally {
     mongoClient.close();

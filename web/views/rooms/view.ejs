@@ -9,12 +9,12 @@
     <p><%= room.address %></p>
     <div class="gallery">
       <div class="main">
-        <img src="<%= room.photos[0] %>" alt="Sala de estar 1">
+        <img src="data:image/png;base64, <%= room.photos[0].toString('base64') %>" alt="Sala de estar 1">
       </div>
       <div class="others">
         <% room.photos.slice(1).forEach((photo, index) => { %>
           <div>
-            <img src="<%= photo %>" alt="Foto acomodação" />
+            <img src="data:image/png;base64, <%= photo.toString('base64') %>" alt="Foto acomodação" />
           </div>
         <% }) %>
       </div>

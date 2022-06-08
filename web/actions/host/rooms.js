@@ -21,7 +21,8 @@ export const postRoom = async (req, res) => {
       pricePerNight: parseInt(req.body.pricePerNight),
       minNights: parseInt(req.body.minNights),
       maxNights: parseInt(req.body.maxNights),
-      host: req.currentHost._id
+      hostId: req.currentHost._id,
+      photos: req.files,
     };
 
     await createRoom(formData);
