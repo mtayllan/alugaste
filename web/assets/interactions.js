@@ -23,9 +23,24 @@ const setLightTheme = () => {
   themeIcon.classList.add('fa-sun');
 }
 
+const updateFontSize = (type) => {
+  const fontSizeMultiplier = localStorage.getItem('@alugaste/fontSizeMultiplier') ?? 1;
+  let size = 16.0;
+  if (type === '+') {
+    size *= fontSizeMultiplier + 0.25;
+  } else if (type === '-') {
+    size *= fontSizeMultiplier - 0.25;
+  }
+
+  localStorage.setItem('@alugaste/fontSizeMultiplier', size);
+  document.body.style.fontSize = `${size}px`;
+};
+
 document.addEventListener("DOMContentLoaded", function(e) {
   const currentTheme = localStorage.getItem('@alugaste/theme');
   if (currentTheme === "dark") {
     setDarkTheme();
   }
+  updateFontSize();
 });
+
