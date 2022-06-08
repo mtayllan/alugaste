@@ -29,3 +29,11 @@ document.addEventListener("DOMContentLoaded", function(e) {
     setDarkTheme();
   }
 });
+
+const paginateRooms = (currentPage) => {
+  fetch(`/rooms/json?page=${currentPage + 1}`).then(function(response) {
+    console.log('vc paginou!');
+  })
+}
+
+document.getElementById('load-rooms').addEventListener("click", paginateRooms());
