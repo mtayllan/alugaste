@@ -40,10 +40,7 @@ app.get('/rooms/:id', rooms.getRoom);
 app.get('/hosts/:id', hostActions.fetchHost)
 
 // HOST ROUTES
-app.get('/host/profile', (req, res) => {
-  const host = getHost(null, req);
-  res.render('host_profile', { host })
-})
+app.get('/host/profile', hostActions.fetchCurrentHost)
 
 app.get('/host/login', hostLogin.getLogin);
 app.post('/host/login', hostLogin.postLogin);
