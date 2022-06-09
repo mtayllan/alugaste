@@ -19,7 +19,13 @@
       <div id="login">
         <div>
           <% if (locals.guestSignedIn == true) { %>
-            <button type="submit">Confirmar</button>
+            <form action="/stay/create" method="post" >
+              <button type="submit">Confirmar</button>
+              <input type="hidden" name="start_date" value="<%= start_date %>">
+              <input type="hidden" name="end_date" value="<%= end_date %>">
+              <input type="hidden" name="total_value" value="<%= total_value %>">
+              <input type="hidden" name="room_id" value="<%= room._id %>">
+            </form>
             <%} else { %>
               Já tem Login? <a href="/guest/login">Faça login</a>
               <div class="mt-1">

@@ -59,6 +59,7 @@ app.get('/guest/logout', guestLogout.getLogout);
 app.get('/guest/register', guestRegister.getRegister)
 app.post('/guest/register', guestRegister.postRegister)
 
+app.post('/stay/create', stayCreate.postCreate)
 app.get('/guest/profile', guestProfile.getProfile)
 
 app.get('/guest/stays/view', guestStays.getStay);

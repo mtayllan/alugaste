@@ -1,3 +1,4 @@
+import { ObjectId } from "mongodb";
 import { createMongoClient } from "./mongo.js"
 
 const listStaysPipeline = (guestId) => ([{
@@ -35,6 +36,19 @@ export const listStays = async (guestId) => {
 
     const collection = mongoClient.db('alugaste').collection('stays');
     return await collection.aggregate(listStaysPipeline(guestId)).toArray();
+  } finally {
+    mongoClient.close();
+  }
+};
+export const createStay = async({start_date,end_date,total_value,room_id,guest_id}) => {
+  const mongoClient = createMongoClient();
+
+  try {
+    await mongoClient.connect();
+
+    const collection = mongoClient.db('alugaste').collection('stays');
+    const record = { start_date,end_date,total_value,room_id:ObjectId(room_id),guest_id };
+    await collection.insertOne(record);
   } finally {
     mongoClient.close();
   }
