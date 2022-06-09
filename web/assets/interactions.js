@@ -24,16 +24,15 @@ const setLightTheme = () => {
 }
 
 const updateFontSize = (type) => {
-  const fontSizeMultiplier = localStorage.getItem('@alugaste/fontSizeMultiplier') ?? 1;
-  let size = 16.0;
+  let fontSizeMultiplier = parseFloat(localStorage.getItem('@alugaste/fontSizeMultiplier')) || 1;
   if (type === '+') {
-    size *= fontSizeMultiplier + 0.25;
+    fontSizeMultiplier += 0.25;
   } else if (type === '-') {
-    size *= fontSizeMultiplier - 0.25;
+    fontSizeMultiplier -= 0.25;
   }
 
-  localStorage.setItem('@alugaste/fontSizeMultiplier', size);
-  document.body.style.fontSize = `${size}px`;
+  localStorage.setItem('@alugaste/fontSizeMultiplier', fontSizeMultiplier);
+  document.body.style.fontSize = `${16 * fontSizeMultiplier}px`;
 };
 
 document.addEventListener("DOMContentLoaded", function(e) {
