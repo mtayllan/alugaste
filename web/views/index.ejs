@@ -18,7 +18,7 @@
           <a href="/rooms/<%= room._id %>">
             <div class="img-imovel">
               <img
-                src="<%= room.photos[0] %>"
+                src="data:image/png;base64, <%= room.photos[0].toString('base64') %>"
                 alt="room photo">
             </div>
             <div class="info-imovel">
