@@ -1,3 +1,4 @@
+
 <%- contentFor('pageHeaders') %>
 <link rel="stylesheet" href="/book_stay.css">
 <title>Confirme seu aluguel</title>
@@ -10,37 +11,42 @@
           <h2>Pedir para reservar</h2>
         </div>
         <div id="stay-resume">
-          <div class="mt-1"><%= book_stay.room.name %></div>
-          <div class="mt-1"><%= book_stay.start_date %> - <%= book_stay.end_date %></div>
-          <div class="mt-1"><%= book_stay.room.num_Guests %> Hóspedes</div>
+          <div class="mt-1"><%= room.name %></div>
+          <div class="mt-1"><%= start_date %> - <%= end_date %></div>
+          <div class="mt-1"><%= total_guests %> Hóspedes</div>
         </div>
       </div>
       <div id="login">
         <div>
-            Já tem Login? <a href="/guest/login">Faça login</a>
+          <% if (locals.guestSignedIn == true) { %>
+            <button type="submit">Confirmar</button>
+            <%} else { %>
+              Já tem Login? <a href="/guest/login">Faça login</a>
+              <div class="mt-1">
+                Ou
+              </div>
+              <div class="row mt-1">
+                  <a href="/guest/register">Cadastro</a>
+              </div>
+            <% } %>
         </div>
-        <div class="mt-1">
-          Ou
-        </div>
-        <div class="row mt-1">
-            <a href="/guest/register">Cadastro</a>
-        </div>
+        
       </div>
     </div>
     <div id="house-information">
       <div class="p-1">
         <div id="house-picture-and-name">
           <div id="house-picture">
-            <img src="<%= book_stay.room.photo %>" alt="casa">          
+            <img src="data:image/png;base64, <%= room.photos[0].toString('base64') %>" alt="casa">          
           </div>
-          <div><%= book_stay.room.name %></div>
+          <div><%= room.name %></div>
         </div>
         <hr>
         <h3>Preço</h3>
         <div class="precos">
           <div>
             <div>
-              R$ <%= book_stay.price.per_night %>,00 x <%= book_stay.price.nights %> noites
+              R$ <%= room.pricePerNight %>,00 x <%= room.numNights %> noites
             </div>
             <div>
               Taxa de limpeza
@@ -50,9 +56,9 @@
             </div>
           </div>
           <div>
-            <div>R$ <%= book_stay.price.per_night*book_stay.price.nights %>,00</div>
-            <div>R$ <%= book_stay.price.clean_tax %>,00</div>
-            <div>R$ <%= book_stay.price.service_tax %>,00</div>
+            <div>R$ <%= total_value %></div>
+            <div>R$ 100,00</div>
+            <div>R$ 10,00</div>
           </div>
         </div>
         <hr>
@@ -61,7 +67,7 @@
             Total
           </div>
           <div>
-            R$ <%= (book_stay.price.per_night*book_stay.price.nights)+book_stay.price.clean_tax+ book_stay.price.service_tax %>,00
+            R$ <%= total_value+110 %>
           </div>
         </div>
       </div>

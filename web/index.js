@@ -13,12 +13,11 @@ import * as guestLogin from './actions/guest/login.js';
 import * as guestRegister from './actions/guest/register.js';
 import * as guestLogout from './actions/guest/logout.js';
 import * as guestStays from './actions/guest/stays.js';
-import * as bookStays from './actions/book_stay/book_stay.js';
 import * as rooms from './actions/rooms.js';
 import * as hostActions from './actions/host/actions.js'
 import * as hostRooms from './actions/host/rooms.js';
 import * as guestProfile from './actions/guest/profile.js';
-
+import * as stayCreate from './actions/stay/create.js'
 const app = express();
 const port = 3000;
 
@@ -38,7 +37,7 @@ app.use(guestAuthentication);
 app.get('/', rooms.getRooms)
 app.get('/rooms/:id', rooms.getRoom);
 app.get('/hosts/:id', hostActions.fetchHost)
-
+app.get('/rooms/:id/stay',stayCreate.getCreate)
 // HOST ROUTES
 app.get('/host/profile', hostActions.fetchCurrentHost)
 
@@ -63,7 +62,6 @@ app.post('/guest/register', guestRegister.postRegister)
 app.get('/guest/profile', guestProfile.getProfile)
 
 app.get('/guest/stays/view', guestStays.getStay);
-app.get('/book_stay/view',bookStays.getBookStay);
 
 
 app.listen(port, () => {
