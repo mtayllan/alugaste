@@ -1,6 +1,5 @@
 import 'dotenv/config'
 import express from 'express';
-import { getHost } from 'alugaste-core/hosts.js'
 import expressLayouts from 'express-ejs-layouts';
 import cookieParser from 'cookie-parser';
 import multer from 'multer';
@@ -59,8 +58,8 @@ app.get('/guest/logout', guestLogout.getLogout);
 app.get('/guest/register', guestRegister.getRegister)
 app.post('/guest/register', guestRegister.postRegister)
 
-app.post('/stay/create', stayCreate.postCreate)
 app.get('/guest/profile', guestProfile.getProfile)
+app.post('/stay/create', stayCreate.postCreate)
 
 app.get('/guest/stays/view', guestStays.getStay);
 

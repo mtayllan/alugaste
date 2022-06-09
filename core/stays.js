@@ -40,14 +40,14 @@ export const listStays = async (guestId) => {
     mongoClient.close();
   }
 };
-export const createStay = async({start_date,end_date,total_value,room_id,guest_id}) => {
+export const createStay = async({ start_date, end_date, total_value, room_id, guest_id }) => {
   const mongoClient = createMongoClient();
 
   try {
     await mongoClient.connect();
 
     const collection = mongoClient.db('alugaste').collection('stays');
-    const record = { start_date,end_date,total_value,room_id:ObjectId(room_id),guest_id };
+    const record = { start_date, end_date, total_value, room_id: ObjectId(room_id), guest_id };
     await collection.insertOne(record);
   } finally {
     mongoClient.close();
