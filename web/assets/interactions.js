@@ -37,7 +37,7 @@ const updateFontSize = (type) => {
 
 const updateStars = (stars) => {
   const totalStars = parseInt(stars);
-  document.getElementsByName('stars').value = totalStars;
+  document.getElementsByName('rating')[0].value = stars;
   Array.from(document.getElementsByClassName('fa-star')).forEach((element, index) => {
     element.classList.toggle('checked', stars > index);
   })

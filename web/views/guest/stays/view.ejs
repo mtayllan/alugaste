@@ -23,9 +23,9 @@
       </div>
     </form>
   <% } else { %>
-    <form action="/stays/comment" method="post">
+    <form action="/guest/stays/rate" method="post">
       <input type="hidden" name="stay_id" value="<%= stay._id %>">
-      <input type="hidden" name="stars" value="0">
+      <input type="hidden" name="rating" value="0">
       <div class="estrelas">
         <% [1,2,3,4,5].forEach(star => { %>
           <span class="fa fa-star" onclick="updateStars('<%= star %>')"></span>
