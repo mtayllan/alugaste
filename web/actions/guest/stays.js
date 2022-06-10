@@ -1,6 +1,6 @@
-import { viewStay } from 'alugaste-core/guest/stays.js'
+import { getStay } from 'alugaste-core/stays.js'
 
-export const getStay = (req, res) => {
-  const stay = viewStay();
+export const getViewStay = async (req, res) => {
+  const stay = await getStay(req.params.id, req.currentGuest._id);
   res.render('guest/stays/view', { stay })
 };

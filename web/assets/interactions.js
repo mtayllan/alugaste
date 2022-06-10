@@ -35,6 +35,14 @@ const updateFontSize = (type) => {
   document.body.style.fontSize = `${16 * fontSizeMultiplier}px`;
 };
 
+const updateStars = (stars) => {
+  const totalStars = parseInt(stars);
+  document.getElementsByName('stars').value = totalStars;
+  Array.from(document.getElementsByClassName('fa-star')).forEach((element, index) => {
+    element.classList.toggle('checked', stars > index);
+  })
+}
+
 document.addEventListener("DOMContentLoaded", function(e) {
   const currentTheme = localStorage.getItem('@alugaste/theme');
   if (currentTheme === "dark") {

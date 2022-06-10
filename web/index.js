@@ -61,7 +61,7 @@ app.post('/guest/register', guestRegister.postRegister)
 app.get('/guest/profile', guestProfile.getProfile)
 app.post('/stay/create', stayCreate.postCreate)
 
-app.get('/guest/stays/view', guestStays.getStay);
+app.get('/guest/stays/:id', guestStays.getViewStay);
 
 
 app.listen(port, () => {

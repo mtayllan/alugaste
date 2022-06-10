@@ -5,20 +5,34 @@
 <%- contentFor('body') %>
 <div class="wrapper">
   <h3>Sua estadia em <%= stay.room.name %></h3>
-  <img src="<%= stay.room.photo %>" alt="Vista do Chalé">
+  <img src="data:image/png;base64, <%= stay.room.photos[0].toString('base64') %>" alt="room photo">
   <p>
     <%= stay.room.address %>
     <br>
-    Data: <%= stay.start_date %> até <%= stay.end_date %>
+    Data: <%= stay.start_date.toLocaleDateString() %> até <%= stay.end_date.toLocaleDateString() %>
   </p>
-  <form>
-    <div class=form>
+  <% if (stay.comment) { %>
+    <form>
+      <div class=form>
+        <div class="estrelas">
+          <% [1,2,3,4,5].forEach(star => { %>
+            <span class="fa fa-star <%= star <= stay.comment.rating ? 'checked' : '' %>"></span>
+          <% }) %>
+        </div>
+        <p><%= stay.comment.content %></p>
+      </div>
+    </form>
+  <% } else { %>
+    <form action="/stays/comment" method="post">
+      <input type="hidden" name="stay_id" value="<%= stay._id %>">
+      <input type="hidden" name="stars" value="0">
       <div class="estrelas">
         <% [1,2,3,4,5].forEach(star => { %>
-          <span class="fa fa-star <%= star <= stay.comment.stars ? 'checked' : '' %>"></span>
+          <span class="fa fa-star" onclick="updateStars('<%= star %>')"></span>
         <% }) %>
       </div>
-      <p><%= stay.comment.content %></p>
-    </div>
-  </form>
+      <textarea name="content" cols="30" rows="10" placeholder="Digite o que achou"></textarea>
+      <button type="submit">Avaliar</button>
+    </form>
+  <% } %>
 </div>
