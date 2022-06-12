@@ -64,7 +64,7 @@ document.getElementById('load-rooms').addEventListener("click", (currentPage = 0
         let img_imovel_div = document.createElement('div')
         img_imovel_div.classList.add('img-imovel')
         let imovel_image = document.createElement('img')
-        imovel_image.setAttribute('src', '/')
+        imovel_image.setAttribute('src', `data:image/png;base64, ${room.photos[0].toString('base64')}`)
         let info_imovel = document.createElement('div')
         info_imovel.classList.add('info-imovel')
         let h31 = document.createElement('h3')
