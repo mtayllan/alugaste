@@ -1,11 +1,11 @@
 import { findRoom } from "alugaste-core/rooms/rooms.js";
-import { parse,differenceInDays } from "date-fns";
+import { parseISO,differenceInDays } from "date-fns";
 import { createStay } from "alugaste-core/stays.js";
 
 export const getCreate = async (req, res) => {
   const room = await findRoom(req.params.id);
-  const start_date = parse(req.query.start_date, "dd/MM/y",new Date());
-  const end_date = parse(req.query.end_date, "dd/MM/y",new Date());
+  const start_date = parseISO(req.query.start_date, "yyyy/MM/dd",new Date());
+  const end_date = parseISO(req.query.end_date, "yyyy/MM/dd",new Date());
   const numNights = differenceInDays(end_date,start_date);
   const total_value= (numNights * room.pricePerNight);
 
@@ -21,8 +21,8 @@ export const getCreate = async (req, res) => {
 
 export const postCreate = async(req,res) =>{
   const formData = {
-    start_date: parse(req.body.start_date, "dd/MM/y", new Date()),
-    end_date: parse(req.body.end_date, "dd/MM/y", new Date()),
+    start_date: parseISO(req.body.start_date, "yyyy/MM/dd", new Date()),
+    end_date: parseISO(req.body.end_date, "yyyy/MM/dd", new Date()),
     total_value: req.body.total_value,
     room_id: req.body.room_id,
     guest_id:req.currentGuest._id

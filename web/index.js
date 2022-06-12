@@ -18,7 +18,7 @@ import * as hostRooms from './actions/host/rooms.js';
 import * as guestProfile from './actions/guest/profile.js';
 import * as stayCreate from './actions/stay/create.js'
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 const upload = multer({ dest: 'uploads/', limits: { fileSize: 1024 * 1024 } })
 

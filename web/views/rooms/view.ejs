@@ -33,18 +33,18 @@
     <hr>
     <div class="rent">
       <h3>R$ <%= room.pricePerNight %>/noite</h3>
-      <form>
+      <form action="/rooms/<%= room._id %>/stay" method="get">
         <div class="form-input">
-          <label for="counter">Nº Hóspedes</label>
-          <input type="number" name="counter" id="counter">
+          <label for="total_guests">Nº Hóspedes</label>
+          <input type="number" name="total_guests" id="counter">
         </div>
         <div class="form-input">
-          <label for="checkin">Check-in</label>
-          <input type="date" name="checkin" id="checkin">
+          <label for="start_date">Check-in</label>
+          <input type="date" name="start_date" id="checkin">
         </div>
         <div class="form-input">
-          <label for="checkout">Check-out</label>
-          <input type="date" name="checkout" id="checkout">
+          <label for="end_date">Check-out</label>
+          <input type="date" name="end_date" id="checkout">
         </div>
         <button type="submit">Fazer reserva</button>
       </form>
