@@ -6,11 +6,7 @@ export const getRooms = async (req, res) => {
 }
 
 export const getRoomsJson = async (req, res) => {
-  const current_page = parseInt(req.cookies._rooms_page) || 0;
-  res.cookie('_rooms_page', current_page);
-  const nextPage = current_page + 1;
-  const rooms = await listRooms(null, req.query.search, nextPage);
-  res.cookie('_rooms_page', nextPage);
+  const rooms = await listRooms(null, req.query.search, req.query.page);
   res.setHeader('Content-Type', 'application/json');
   res.json(rooms);
 }
