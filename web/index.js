@@ -18,6 +18,7 @@ import * as hostRooms from './actions/host/rooms.js';
 import * as guestProfile from './actions/guest/profile.js';
 import * as stayCreate from './actions/stay/create.js'
 const app = express();
+const port = process.env.PORT || 3000;
 
 const upload = multer({ dest: 'uploads/', limits: { fileSize: 1024 * 1024 } })
 
@@ -65,6 +66,6 @@ app.get('/guest/stays/:id', guestStays.getViewStay);
 app.post('/guest/stays/rate', guestStays.postRateStay);
 
 
-app.listen(process.env.PORT || 3000, () => {
+app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
