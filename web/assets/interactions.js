@@ -29,3 +29,9 @@ document.addEventListener("DOMContentLoaded", function(e) {
     setDarkTheme();
   }
 });
+
+document.getElementById('load-rooms').addEventListener("click", (currentPage = 0) => {
+  fetch(`/rooms/json?page=${currentPage + 1}`)
+    .then((response) => response.json())
+    .then((res) => console.log(res))
+});

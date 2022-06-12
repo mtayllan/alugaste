@@ -34,7 +34,7 @@ export const findRoom = async (id) => {
 }
 
 
-export const listRooms = async (hostId, search) => {
+export const listRooms = async (hostId, search, page = 0) => {
   const mongoClient = createMongoClient();
 
   try {
@@ -43,9 +43,11 @@ export const listRooms = async (hostId, search) => {
     const collection = mongoClient.db('alugaste').collection('rooms');
     const query = {}
 
+    const perPage = 2
+
     if (search) query.name = new RegExp(`${search}`);
     if (hostId) query.host_id = ObjectId(hostId);
-    return await collection.find(query).toArray();
+    return await collection.find(query).skip(perPage * page).limit(perPage).toArray();
   } finally {
     mongoClient.close();
   }
