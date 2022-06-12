@@ -34,6 +34,7 @@ app.use(guestAuthentication);
 
 // OPEN ROUTES
 app.get('/', rooms.getRooms)
+app.get('/rooms/json', rooms.getRoomsJson)
 app.get('/rooms/:id', rooms.getRoom);
 app.get('/hosts/:id', hostActions.fetchHost)
 app.get('/rooms/:id/stay',stayCreate.getCreate)
