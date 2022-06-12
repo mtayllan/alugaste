@@ -56,7 +56,7 @@ document.getElementById('load-rooms').addEventListener("click", (currentPage = 0
   fetch(`/rooms/json?page=${next_page}`)
     .then((response) => response.json())
     .then((res) => {
-      if (res.length <= 1) {
+      if (res.length <= 3) {
         document.getElementById('load-rooms').remove()
       } else {
         document.getElementById('load-rooms').setAttribute('data-page', next_page + 1)
@@ -75,7 +75,7 @@ document.getElementById('load-rooms').addEventListener("click", (currentPage = 0
           let h31 = document.createElement('h3')
           let h42 = document.createElement('h4')
           let h43 = document.createElement('h4')
-          h31.textContent = `${room.name} (${room.reviewMean} ⭐)`
+          h31.textContent = `${room.name} (${room.reviewMean || 0} ⭐)`
           h42.textContent = room.address
           h43.textContent = `${room.maxGuests} hóspedes`
 

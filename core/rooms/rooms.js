@@ -43,7 +43,7 @@ export const listRooms = async (hostId, search, page = 0) => {
     const collection = mongoClient.db('alugaste').collection('rooms');
     const query = {}
 
-    const perPage = 2
+    const perPage = 4
 
     if (search) query.name = new RegExp(`${search}`);
     if (hostId) query.host_id = ObjectId(hostId);

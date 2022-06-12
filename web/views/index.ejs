@@ -22,7 +22,7 @@
                 alt="room photo">
             </div>
             <div class="info-imovel">
-              <h3><%= room.name %> (<%= room.reviewMean %>⭐)</h3>
+              <h3><%= room.name %> (<%= room.reviewMean || 0 %>⭐)</h3>
               <h4><%= room.address %></h4>
               <h4><%= room.maxGuests %> hospedes</h4>
             </div>
