@@ -20,6 +20,13 @@
     justify-content: center;
 }
 
+#rooms-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .left-row {
     display: flex;
     flex-direction: row;
@@ -53,6 +60,7 @@ input {
 .house-item-card {
     padding: 0.5rem;
     margin: 5px;
+    width: 25%;
 }
 
 #comments-row {
@@ -107,6 +115,12 @@ input {
 
 .comment-text {
     font-size: 12px
+}
+
+.house-item-card img {
+    height: 100px;
+    width: 100%;
+    object-fit: cover;
 }
 
 @media only screen and (max-width:768px) {

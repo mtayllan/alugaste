@@ -9,7 +9,12 @@
     <div class="card" id="profile-card">
       <div class="row">
         <div class="fill">
-          <img src="<%= host.photo %>" alt="foto do anfitrião" />
+          <% if (host.photo) { %>
+            <img src="data:image/png;base64, <%= host.photo.toString('base64') %>" alt="foto do anfitrião" />
+          <% } else { %>
+            <img src="../sem-imagem.png" alt="imóvel sem imagem" class="house-pic">
+          <% } %>
+
         </div>
       </div>
       <div class="row mt-1">
@@ -27,12 +32,16 @@
     </div>
     <div id="house-list-card" class="card">
       <h2>Disponíveis</h2>
-      <div class="row">
-        <% if (host.rooms) { %>
-          <% host.rooms.forEach(room=> { %>
+      <div id="rooms-row">
+        <% if (host.rooms || rooms) { %>
+          <% (host.rooms || rooms).forEach(room=> { %>
             <div class="house-item-card card">
               <div class="row">
-                <img src="<%= room.photo %>" alt="gato" class="house-pic">
+                <% if (room.photos[0]) { %>
+                  <img src="data:image/png;base64, <%= room.photos[0].toString('base64') %>" alt="foto" class="house-pic">
+                <% } else { %>
+                  <img src="../sem-imagem.png" alt="imóvel sem imagem" class="house-pic">
+                <% } %>
               </div>
               <div class="left-row mt-1">
                 <%= room.reviewMean %> estrelas
