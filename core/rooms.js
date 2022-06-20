@@ -20,6 +20,8 @@ const findRoomPipeline = (id) => (
     }
   ]
 )
+
+// GET rooms/:id
 export const findRoom = async (id) => {
   const mongoClient = createMongoClient();
 
@@ -34,6 +36,7 @@ export const findRoom = async (id) => {
 }
 
 
+// GET rooms
 export const listRooms = async (hostId, search, page = 0) => {
   const mongoClient = createMongoClient();
 
@@ -53,6 +56,7 @@ export const listRooms = async (hostId, search, page = 0) => {
   }
 }
 
+// POST rooms
 export const createRoom = async ({ name, description, maxGuests, totalBathrooms, totalRooms, totalBeds, others, pricePerNight, minNights, maxNights, hostId, photos }) => {
   const mongoClient = createMongoClient();
 

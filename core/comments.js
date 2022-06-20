@@ -1,6 +1,7 @@
 import { createMongoClient } from "./mongo.js";
 import { ObjectId } from "mongodb";
 
+// POST /comments
 export const createComment = async ({ rating, content, stay_id }) => {
   const mongoClient = createMongoClient();
 

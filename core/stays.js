@@ -29,7 +29,7 @@ const getStayPipeline = (stayId, guestId) => ([
   { $unwind: { path: "$comment", preserveNullAndEmptyArrays: true } }
 ]);
 
-
+// GET stays
 export const listStays = async (guestId) => {
   const mongoClient = createMongoClient();
 
@@ -43,6 +43,7 @@ export const listStays = async (guestId) => {
   }
 };
 
+// GET stays/:id/?guestId=:guestId
 export const getStay = async (stayId, guestId) => {
   const mongoClient = createMongoClient();
 
@@ -57,6 +58,7 @@ export const getStay = async (stayId, guestId) => {
   }
 }
 
+// POST stays
 export const createStay = async({ start_date, end_date, total_value, room_id, guest_id }) => {
   const mongoClient = createMongoClient();
 

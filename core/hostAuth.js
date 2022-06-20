@@ -17,6 +17,7 @@ const getUnsignedToken = async (token) => {
   }
 }
 
+// GET hosts/validate_auth
 export const authenticateByToken = async (token) => {
   const unsignedToken = await getUnsignedToken(token);
   if (unsignedToken === 'invalid_token') return 'invalid_token';
@@ -35,6 +36,7 @@ export const authenticateByToken = async (token) => {
   }
 }
 
+// POST hosts/login
 export const login = async ({ email, password }) => {
   const encryptedPassword = hashMessage(password);
   const mongoClient = createMongoClient();
@@ -52,6 +54,7 @@ export const login = async ({ email, password }) => {
   }
 }
 
+// DELETE hosts/logout
 export const logout = async (host) => {
   const mongoClient = createMongoClient();
   try {

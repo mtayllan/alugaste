@@ -17,6 +17,7 @@ const findHostPipeline = (id) => (
   ]
 )
 
+// GET hosts/:id
 export const getHost = async (id) => {
   const mongoClient = createMongoClient();
 
@@ -33,6 +34,7 @@ export const getHost = async (id) => {
   }
 }
 
+// POST hosts
 export const createAccount = async ({ name, birthdate, address, email, password }) => {
   const mongoClient = createMongoClient();
 
