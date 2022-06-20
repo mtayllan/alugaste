@@ -1,4 +1,4 @@
-import { logout } from 'alugaste-core/guest/authentication.js'
+import { logout } from 'alugaste-core/guestAuth.js'
 
 export const getLogout = async (req, res) => {
   if (req.guestSignedIn) {

@@ -1,4 +1,4 @@
-import { listRooms, findRoom } from 'alugaste-core/rooms/rooms.js'
+import { listRooms, findRoom } from 'alugaste-core/rooms.js'
 
 export const getRooms = async (req, res) => {
   const rooms = await listRooms(null, req.query.search);

@@ -1,10 +1,10 @@
-import { createMongoClient } from "../mongo.js"
+import { createMongoClient } from "./mongo.js"
 import jwt from 'jsonwebtoken';
-import { hashMessage } from "../utils.js";
+import { hashMessage } from "./utils.js";
 import { ObjectId } from "mongodb";
 
-const buildAccessToken = (guest) => {
-  const token = { id: guest._id, now: new Date().toISOString() };
+const buildAccessToken = (host) => {
+  const token = { id: host._id, now: new Date().toISOString() };
   return jwt.sign(token, process.env.SECRET)
 };
 
@@ -24,12 +24,12 @@ export const authenticateByToken = async (token) => {
   const mongoClient = createMongoClient();
   try {
     await mongoClient.connect()
-    const collection = mongoClient.db('alugaste').collection('guests');
+    const collection = mongoClient.db('alugaste').collection('hosts');
     const query = { _id: ObjectId(unsignedToken.id) };
-    const guest = await collection.findOne(query);
+    const host = await collection.findOne(query);
 
-    if (guest === null || guest.access_token !== token) return 'invalid_token';
-    return guest;
+    if (host === null || host.access_token !== token) return 'invalid_token';
+    return host;
   } finally {
     mongoClient.close();
   }
@@ -40,24 +40,24 @@ export const login = async ({ email, password }) => {
   const mongoClient = createMongoClient();
   try {
     await mongoClient.connect();
-    const collection = mongoClient.db('alugaste').collection('guests');
+    const collection = mongoClient.db('alugaste').collection('hosts');
     const query = { email: email, encrypted_password: encryptedPassword };
-    const guest = await collection.findOne(query);
-    if (guest === null) return 'not_found';
-    const accessToken = buildAccessToken(guest);
-    await collection.updateOne({ _id: guest._id }, { $set: { access_token: accessToken } });
+    const host = await collection.findOne(query);
+    if (host === null) return 'not_found';
+    const accessToken = buildAccessToken(host);
+    await collection.updateOne({ _id: host._id }, { $set: { access_token: accessToken } });
     return accessToken;
   } finally {
     await mongoClient.close();
   }
 }
 
-export const logout = async (guest) => {
+export const logout = async (host) => {
   const mongoClient = createMongoClient();
   try {
     await mongoClient.connect();
-    const collection = mongoClient.db('alugaste').collection('guests');
-    const query = { access_token: guest.access_token };
+    const collection = mongoClient.db('alugaste').collection('hosts');
+    const query = { access_token: host.access_token };
     await collection.updateOne(query, { $unset: { access_token: '' } });
     return true;
   } finally {

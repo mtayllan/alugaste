@@ -1,4 +1,4 @@
-import { login } from 'alugaste-core/host/authentication.js'
+import { login } from 'alugaste-core/hostAuth.js'
 
 export const getLogin = (req, res) => {
   if (req.hostSignedIn) {

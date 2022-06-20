@@ -1,4 +1,4 @@
-import { createAccount } from 'alugaste-core/guest/register.js'
+import { createAccount } from 'alugaste-core/guests.js'
 
 export const getRegister = (req, res) => {
   if (req.guestSignedIn) {

@@ -1,4 +1,4 @@
-import { login } from 'alugaste-core/guest/authentication.js'
+import { login } from 'alugaste-core/guestAuth.js'
 
 export const getLogin = (req, res) => {
   if (req.guestSignedIn) {

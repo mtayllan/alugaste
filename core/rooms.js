@@ -1,4 +1,4 @@
-import { createMongoClient } from "../mongo.js"
+import { createMongoClient } from "./mongo.js"
 import { ObjectId } from "mongodb";
 import { readFileSync } from 'fs';
 import { Buffer } from 'buffer';

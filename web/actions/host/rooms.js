@@ -1,4 +1,4 @@
-import { createRoom } from 'alugaste-core/rooms/rooms.js'
+import { createRoom } from 'alugaste-core/rooms.js'
 
 export const getNewRoom = (req, res) => {
   if (req.hostSignedIn) {

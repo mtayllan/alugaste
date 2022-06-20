@@ -1,5 +1,5 @@
-import { getHost } from 'alugaste-core/host/hosts.js'
-import { listRooms } from 'alugaste-core/rooms/rooms.js';
+import { getHost } from 'alugaste-core/hosts.js'
+import { listRooms } from 'alugaste-core/rooms.js';
 
 export const fetchHost = async (req, res) => {
   const host = await getHost(req.params.id);

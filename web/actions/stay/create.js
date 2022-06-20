@@ -1,4 +1,4 @@
-import { findRoom } from "alugaste-core/rooms/rooms.js";
+import { findRoom } from "alugaste-core/rooms.js";
 import { parseISO,differenceInDays } from "date-fns";
 import { createStay } from "alugaste-core/stays.js";
 

@@ -1,4 +1,4 @@
-import { authenticateByToken } from 'alugaste-core/guest/authentication.js'
+import { authenticateByToken } from 'alugaste-core/guestAuth.js'
 
 const clearAuthentication = (req, res) => {
   req.guestSignedIn = false;

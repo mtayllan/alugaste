@@ -1,6 +1,6 @@
-import { createMongoClient } from "../mongo.js"
-import { hashMessage } from '../utils.js';
-import { login } from './authentication.js'
+import { createMongoClient } from "./mongo.js"
+import { hashMessage } from './utils.js';
+import { login } from './guestAuth.js'
 
 export const createAccount = async ({ name, phone, email, password }) => {
   const mongoClient = createMongoClient();
