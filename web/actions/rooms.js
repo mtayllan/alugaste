@@ -1,14 +1,13 @@
-import { listRooms, findRoom } from 'alugaste-core/rooms.js'
 import fetch from 'node-fetch'
 
 export const getRooms = async (req, res) => {
-  const rooms = await listRooms(null, req.query.search);
+  const rooms = await (await fetch('http://localhost:4000/rooms?search' + req.query.search)).json();
   res.render('index', { rooms })
 }
 
 export const getRoomsJson = async (req, res) => {
-  const rooms = await listRooms(null, req.query.search, req.query.page);
-  res.setHeader('Content-Type', 'application/json');
+  const url = `http://localhost:4000/rooms?search${req.query.search ?? ''}&page=${req.query.page ?? ''}`; 
+  const rooms = await (await fetch(url)).json();
   res.json(rooms);
 }
 

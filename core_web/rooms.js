@@ -1,6 +1,12 @@
 import express from 'express'
-import { findRoom } from 'core/rooms.js';
+import { findRoom, listRooms } from 'core/rooms.js';
 const router = express.Router();
+
+
+router.get('/', async (req, res) => {
+  const rooms = await listRooms(null, req.query.search); 
+  res.json(rooms);
+});
 
 
 router.get('/:id', async (req, res) => {  
