@@ -23,12 +23,10 @@ export const getHost = async (id) => {
 
   try {
     await mongoClient.connect();
-    const query = { _id: ObjectId(id) };
     const collection = mongoClient.db('alugaste').collection('hosts');
 
-    const host = await collection.aggregate(findHostPipeline(id)).toArray();
-    // const host = await collection.findOne(query);
-    return host[0];
+    const hosts = await collection.aggregate(findHostPipeline(id)).toArray();
+    return hosts[0];
   } finally {
     mongoClient.close();
   }
