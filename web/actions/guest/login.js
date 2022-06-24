@@ -1,4 +1,4 @@
-import { login } from 'alugaste-core/guestAuth.js'
+import fetchApi from '../fetchApi.js';
 
 export const getLogin = (req, res) => {
   if (req.guestSignedIn) {
@@ -10,11 +10,15 @@ export const getLogin = (req, res) => {
 
 export const postLogin = async (req, res) => {
   const formData = { email: req.body.email, password: req.body.password };
-  const response = await login(formData);
-  if (response === 'not_found') {
-    res.render('guest/login', { error: true, formData })
-  } else {
-    res.cookie('_alugaste_guest_session', response);
+  const response = await fetchApi('/guests/login', {
+    method: 'POST',
+    body: JSON.stringify(formData),
+    headers: { 'Content-Type': 'application/json' }
+  });
+  if (response.accessToken) {
+    res.cookie('_alugaste_guest_session', response.accessToken);
     res.redirect('/');
+  } else {
+    res.render('guest/login', { error: true, formData })
   }
 }
