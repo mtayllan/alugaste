@@ -21,7 +21,6 @@ const findRoomPipeline = (id) => (
   ]
 )
 
-// GET rooms/:id
 export const findRoom = async (id) => {
   const mongoClient = createMongoClient();
 
@@ -36,7 +35,6 @@ export const findRoom = async (id) => {
 }
 
 
-// GET rooms
 export const listRooms = async (hostId, search, page = 0) => {
   const mongoClient = createMongoClient();
 

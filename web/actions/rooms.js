@@ -1,17 +1,16 @@
-import fetch from 'node-fetch'
+import fetchApi from './fetchApi.js';
 
 export const getRooms = async (req, res) => {
-  const rooms = await (await fetch(`${process.env.PRIVATE_SERVER_URL}/rooms?search${req.query.search}`)).json();
+  const rooms = await fetchApi(`/rooms?search=${req.query.search ?? ''}`);
   res.render('index', { rooms })
 }
 
 export const getRoomsJson = async (req, res) => {
-  const url = `${process.env.PRIVATE_SERVER_URL}/rooms?search${req.query.search ?? ''}&page=${req.query.page ?? ''}`; 
-  const rooms = await (await fetch(url)).json();
+  const rooms =  await fetchApi(`/rooms?search=${req.query.search ?? ''}&page=${req.query.page ?? ''}`);
   res.json(rooms);
 }
 
 export const getRoom = async (req, res) => {
-  const room = await (await fetch(`${process.env.PRIVATE_SERVER_URL}/rooms/${req.params.id}`)).json();
+  const room =  await fetchApi(`/rooms/${req.params.id}`);
   res.render('rooms/view', { room })
 }
