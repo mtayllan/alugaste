@@ -1,9 +1,14 @@
-import { authenticateByToken } from 'alugaste-core/guestAuth.js'
+import fetchApi from '../actions/fetchApi.js';
 
 const clearAuthentication = (req, res) => {
   req.guestSignedIn = false;
   req.currentGuest = false;
   res.clearCookie('_alugaste_guest_session');
+}
+
+const authenticateByToken = async (token) => {
+  const guest = await fetchApi('/guests/validate_auth', { headers: {'token': token} });
+  return guest;
 }
 
 export const guestAuthentication = async (req, res, next) => {
