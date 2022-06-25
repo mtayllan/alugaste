@@ -6,7 +6,7 @@ export const getRooms = async (req, res) => {
 }
 
 export const getRoomsJson = async (req, res) => {
-  const rooms =  await fetchApi(`/rooms?search=${req.query.search ?? ''}&page=${req.query.page ?? ''}`);
+  const rooms = await fetchApi(`/rooms?search=${req.query.search ?? ''}&page=${req.query.page ?? ''}`);
   res.json(rooms);
 }
 
