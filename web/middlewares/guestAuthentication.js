@@ -1,4 +1,4 @@
-import fetchApi from '../actions/fetchApi.js';
+import fetchApi from '../fetchApi.js';
 
 const clearAuthentication = (req, res) => {
   req.guestSignedIn = false;

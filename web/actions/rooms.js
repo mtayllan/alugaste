@@ -1,4 +1,4 @@
-import fetchApi from './fetchApi.js';
+import fetchApi from '../fetchApi.js';
 
 export const getRooms = async (req, res) => {
   const rooms = await fetchApi(`/rooms?search=${req.query.search ?? ''}`);

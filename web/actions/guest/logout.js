@@ -1,4 +1,4 @@
-import fetchApi from '../fetchApi.js';
+import fetchApi from '../../fetchApi.js';
 
 export const getLogout = async (req, res) => {
   if (req.guestSignedIn) {
