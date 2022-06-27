@@ -1,4 +1,4 @@
-import { createAccount } from 'alugaste-core/hosts.js'
+import fetch from 'node-fetch'
 
 export const getRegister = (req, res) => {
   if (req.hostSignedIn) {
@@ -10,11 +10,19 @@ export const getRegister = (req, res) => {
 
 export const postRegister = async (req, res) => {
   const formData = { name: req.body.name, birthdate: req.body.birthdate, address: req.body.address, email: req.body.email, password: req.body.password };
-  const response = await createAccount(formData);
-  if (response === 'already_exists') {
-    res.render('host/register', { error: true, formData })
-  } else {
-    res.cookie('_alugaste_host_session', response);
-    res.redirect('/');
-  }
+
+  await fetch(`${process.env.PRIVATE_SERVER_URL}/hosts/`, {
+    method: 'POST',
+    body: JSON.stringify(formData),
+    headers: { 'Content-Type': 'application/json' }
+  })
+  .then(response=>response.json())
+  .then(data => {
+    if (data.session) {
+      res.cookie('_alugaste_host_session', data.session);
+      res.redirect('/');
+    } else {
+      res.render('host/register', { error: true, formData })
+    }
+  })
 }
