@@ -35,7 +35,7 @@ export const findRoom = async (id) => {
 }
 
 
-export const listRooms = async (hostId, search, page = 0) => {
+export const listRooms = async (hostId, search = null, page = 0) => {
   const mongoClient = createMongoClient();
 
   try {

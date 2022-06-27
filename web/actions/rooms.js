@@ -11,6 +11,6 @@ export const getRoomsJson = async (req, res) => {
 }
 
 export const getRoom = async (req, res) => {
-  const room =  await fetchApi(`/rooms/${req.params.id}`);
+  const room = await fetchApi(`/rooms/${req.params.id}`);
   res.render('rooms/view', { room })
 }

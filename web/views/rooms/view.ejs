@@ -9,7 +9,11 @@
     <p><%= room.address %></p>
     <div class="gallery">
       <div class="main">
-        <img src="data:image/png;base64, <%= room.photos[0].toString('base64') %>" alt="Sala de estar 1">
+        <% if (room.photos[0]) { %>
+          <img src="data:image/png;base64, <%= room.photos[0].toString('base64') %>" alt="Sala de estar 1">
+        <% } else { %>
+          <img src="../sem-imagem.png" alt="imóvel sem imagem" class="house-pic">
+        <% } %>
       </div>
       <div class="others">
         <% room.photos.slice(1).forEach((photo, index) => { %>
