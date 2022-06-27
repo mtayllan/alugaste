@@ -55,12 +55,12 @@ export const login = async ({ email, password }) => {
 }
 
 // DELETE hosts/logout
-export const logout = async (host) => {
+export const logout = async (accessToken) => {
   const mongoClient = createMongoClient();
   try {
     await mongoClient.connect();
     const collection = mongoClient.db('alugaste').collection('hosts');
-    const query = { access_token: host.access_token };
+    const query = { access_token: accessToken };
     await collection.updateOne(query, { $unset: { access_token: '' } });
     return true;
   } finally {

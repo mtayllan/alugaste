@@ -1,9 +1,8 @@
 import express from 'express'
 import { getHost, createAccount } from 'core/hosts.js';
-import multer from 'multer';
+import { authenticateByToken, login, logout } from 'core/hostAuth.js';
 
 const router = express.Router();
-const upload = multer({ dest: 'uploads/', limits: { fileSize: 1024 * 1024 } })
 
 router.get('/:id', async (req, res) => {
   const host = await getHost(req.params.id);
@@ -24,6 +23,28 @@ router.post('/', async (req, res) => {
   } else {
     res.status(201).json({ session: response });
   }
+});
+
+router.get('/validate_auth', async (req, res) => {
+  const token = req.headers.token;
+  const host = await authenticateByToken(token);
+  res.json(host);
+});
+
+router.post('/login', async (req, res) => {
+  const { email, password } = req.body;
+  const result = await login({ email, password });
+  if (result === 'not_found') {
+    res.status(422).json();
+  } else {
+    res.json({ accessToken: result })
+  }
+});
+
+router.delete('/logout', async (req, res) => {
+  const token = req.headers.token;
+  await logout(token);
+  res.status(204).json();
 });
 
 export default router;

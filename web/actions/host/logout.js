@@ -1,8 +1,11 @@
-import { logout } from 'alugaste-core/hostAuth.js'
+import fetchApi from '../../fetchApi.js';
 
 export const getLogout = async (req, res) => {
   if (req.hostSignedIn) {
-    await logout(req.currentHost);
+    await fetchApi('/hosts/logout',{
+      method: 'DELETE',
+      headers: { token: req.currentHost.access_token},
+    })
   }
   res.redirect('/');
 }
