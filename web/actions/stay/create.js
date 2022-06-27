@@ -1,6 +1,6 @@
 import { findRoom } from "alugaste-core/rooms.js";
 import { parseISO,differenceInDays } from "date-fns";
-import { createStay } from "alugaste-core/stays.js";
+import fetchApi from '../../fetchApi.js'
 
 export const getCreate = async (req, res) => {
   const room = await findRoom(req.params.id);
@@ -21,12 +21,18 @@ export const getCreate = async (req, res) => {
 
 export const postCreate = async(req,res) =>{
   const formData = {
-    start_date: parseISO(req.body.start_date, "yyyy/MM/dd", new Date()),
-    end_date: parseISO(req.body.end_date, "yyyy/MM/dd", new Date()),
+    start_date: req.body.start_date,
+    end_date: req.body.end_date,
     total_value: req.body.total_value,
     room_id: req.body.room_id,
-    guest_id:req.currentGuest._id
+    guest_id: req.currentGuest._id
   };
-  await createStay(formData)
+
+  await fetchApi('/stays/', {
+    method: 'POST',
+    body: JSON.stringify(formData),
+    headers: { 'Content-Type': 'application/json' }
+  });
+
   res.redirect('/guest/profile')
 }

@@ -2,7 +2,9 @@ import { getStay } from 'alugaste-core/stays.js'
 import fetchApi from '../../fetchApi.js'
 
 export const getViewStay = async (req, res) => {
-  const stay = await getStay(req.params.id, req.currentGuest._id);
+  const stay = await fetchApi(`/stays/${req.params.id}/guests/${req.currentGuest._id}/`);
+  stay.start_date = new Date (Date.parse(stay.start_date))
+  stay.end_date = new Date (Date.parse(stay.end_date))
   res.render('guest/stays/view', { stay })
 };
 
@@ -12,7 +14,7 @@ export const postRateStay = async (req, res) => {
     method: 'POST',
     body: JSON.stringify(params),
     headers: { 'Content-Type': 'application/json' }
-  })
+  });
 
   res.redirect(`/guest/stays/${req.body.stay_id}`);
 }
