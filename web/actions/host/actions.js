@@ -1,4 +1,3 @@
-import { getHost } from 'alugaste-core/hosts.js'
 import fetchApi from '../../fetchApi.js';
 
 export const fetchHost = async (req, res) => {

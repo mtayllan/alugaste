@@ -1,4 +1,3 @@
-import { getStay } from 'alugaste-core/stays.js'
 import fetchApi from '../../fetchApi.js'
 
 export const getViewStay = async (req, res) => {

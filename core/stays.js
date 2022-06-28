@@ -18,12 +18,12 @@ const lookupRoom = [
 ];
 
 const listStaysPipeline = (guestId) => ([
-  { $match: { guest_id: guestId } },
+  { $match: { guest_id: ObjectId(guestId) } },
   ...lookupRoom
 ]);
 
 const getStayPipeline = (stayId, guestId) => ([
-  { $match: { guest_id: guestId, _id: ObjectId(stayId) } },
+  { $match: { guest_id: ObjectId(guestId), _id: ObjectId(stayId) } },
   ...lookupRoom,
   { $lookup: { from: 'comments', localField: '_id', foreignField: 'stay_id', as: 'comment' } },
   { $unwind: { path: "$comment", preserveNullAndEmptyArrays: true } }
@@ -66,7 +66,7 @@ export const createStay = async({ start_date, end_date, total_value, room_id, gu
     await mongoClient.connect();
 
     const collection = mongoClient.db('alugaste').collection('stays');
-    const record = { start_date, end_date, total_value, room_id: ObjectId(room_id), guest_id };
+    const record = { start_date, end_date, total_value, room_id: ObjectId(room_id), guest_id: ObjectId(guest_id) };
     await collection.insertOne(record);
   } finally {
     mongoClient.close();

@@ -4,15 +4,7 @@ import { authenticateByToken, login, logout } from 'core/hostAuth.js';
 
 const router = express.Router();
 
-router.get('/:id', async (req, res) => {
-  const host = await getHost(req.params.id);
 
-  if (host) {
-    res.json(host).status(200);
-  } else {
-    res.json({}).status(404);
-  }
-});
 
 router.post('/', async (req, res) => {
   const formData = { name: req.body.name, birthdate: req.body.birthdate, address: req.body.address, email: req.body.email, password: req.body.password };
@@ -45,6 +37,16 @@ router.delete('/logout', async (req, res) => {
   const token = req.headers.token;
   await logout(token);
   res.status(204).json();
+});
+
+router.get('/:id', async (req, res) => {
+  const host = await getHost(req.params.id);
+
+  if (host) {
+    res.json(host).status(200);
+  } else {
+    res.json({}).status(404);
+  }
 });
 
 export default router;

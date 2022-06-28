@@ -1,9 +1,8 @@
-import { findRoom } from "alugaste-core/rooms.js";
 import { parseISO,differenceInDays } from "date-fns";
 import fetchApi from '../../fetchApi.js'
 
 export const getCreate = async (req, res) => {
-  const room = await findRoom(req.params.id);
+  const room = await fetchApi(`/rooms/${req.params.id}`);
   const start_date = parseISO(req.query.start_date, "yyyy/MM/dd",new Date());
   const end_date = parseISO(req.query.end_date, "yyyy/MM/dd",new Date());
   const numNights = differenceInDays(end_date,start_date);

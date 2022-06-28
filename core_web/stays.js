@@ -1,6 +1,5 @@
 import express from 'express'
 import { listStays, getStay, createStay } from 'core/stays.js';
-import { ObjectId } from "mongodb";
 import { parseISO } from "date-fns";
 
 const router = express.Router();
@@ -11,7 +10,7 @@ router.post('/', async (req, res) => {
     end_date: parseISO(req.body.end_date, "yyyy/MM/dd", new Date()),
     total_value: req.body.total_value,
     room_id: req.body.room_id,
-    guest_id: ObjectId(req.body.guest_id)
+    guest_id: req.body.guest_id,
   };
 
   await createStay(formData);
@@ -21,7 +20,7 @@ router.post('/', async (req, res) => {
 router.get('/:id/guests/:guest_id/', async (req, res) => {
   const id = req.params.id;
   const guestId = req.params.guest_id;
-  const stay = await getStay(id, ObjectId(guestId));
+  const stay = await getStay(id, guestId);
 
   if (stay) {
     res.json(stay).status(200);
@@ -31,7 +30,7 @@ router.get('/:id/guests/:guest_id/', async (req, res) => {
 });
 
 router.get('/', async (req, res) => {
-  const stays = await listStays(ObjectId(req.query.guestId));
+  const stays = await listStays(req.query.guestId);
 
   if (stays) {
     res.json(stays).status(200);

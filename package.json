@@ -19,7 +19,6 @@
   },
   "homepage": "https://github.com/mtayllan/alugaste#readme",
   "dependencies": {
-    "alugaste-core": "file:core",
     "cookie-parser": "^1.4.6",
     "date-fns": "^2.28.0",
     "dotenv": "^16.0.1",
