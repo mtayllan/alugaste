@@ -2,11 +2,11 @@
   "name": "alugaste",
   "version": "1.0.0",
   "description": "",
-  "main": "web/index.js",
+  "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node web/index.js",
-    "dev": "nodemon web/index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",

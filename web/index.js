@@ -22,9 +22,9 @@ const port = process.env.PORT || 3000;
 
 const upload = multer({ dest: 'uploads/', limits: { fileSize: 1024 * 1024 } })
 
-app.use(express.static('./web/assets'));
+app.use(express.static('./assets'));
 app.set('view engine', 'ejs');
-app.set('views', './web/views');
+app.set('views', './views');
 app.use(expressLayouts);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
