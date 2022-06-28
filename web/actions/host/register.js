@@ -16,7 +16,7 @@ export const postRegister = async (req, res) => {
     body: JSON.stringify(formData),
     headers: { 'Content-Type': 'application/json' }
   })
-  .then(response=>response.json())
+  .then(response => response.json())
   .then(data => {
     if (data.session) {
       res.cookie('_alugaste_host_session', data.session);
@@ -24,5 +24,5 @@ export const postRegister = async (req, res) => {
     } else {
       res.render('host/register', { error: true, formData })
     }
-  })
+  });
 }

@@ -1,4 +1,4 @@
-import { createAccount } from 'alugaste-core/guests.js'
+import fetch from 'node-fetch'
 
 export const getRegister = (req, res) => {
   if (req.guestSignedIn) {
@@ -15,11 +15,19 @@ export const postRegister = async (req, res) => {
     email: req.body.email,
     password: req.body.password
   };
-  const response = await createAccount(formData);
-  if (response === 'already_exists') {
-    res.render('guest/register', { error: true, formData })
-  } else {
-    res.cookie('_alugaste_guest_session', response);
-    res.redirect('/');
-  }
+
+  await fetch(`${process.env.PRIVATE_SERVER_URL}/guests/`, {
+    method: 'POST',
+    body: JSON.stringify(formData),
+    headers: { 'Content-Type': 'application/json' }
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.session) {
+      res.cookie('_alugaste_guest_session', data.session);
+      res.redirect('/');
+    } else {
+      res.render('guest/register', { error: true, formData })
+    }
+  });
 }

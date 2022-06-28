@@ -40,8 +40,8 @@ export const createAccount = async ({ name, birthdate, address, email, password 
     await mongoClient.connect();
     const collection = mongoClient.db('alugaste').collection('hosts');
     const query = { email: email };
-    const guest = await collection.findOne(query);
-    if (guest) return 'already_exists';
+    const host = await collection.findOne(query);
+    if (host) return 'already_exists';
 
     const encryptedPassword = hashMessage(password);
     const record = { name, birthdate, address, email, encrypted_password: encryptedPassword };
