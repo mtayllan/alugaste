@@ -27,7 +27,7 @@ router.post('/login', async (req, res) => {
   const { email, password } = req.body;
   const result = await login({ email, password });
   if (result === 'not_found') {
-    res.status(422).json();
+    res.sendStatus(422);
   } else {
     res.json({ accessToken: result })
   }
@@ -36,7 +36,7 @@ router.post('/login', async (req, res) => {
 router.delete('/logout', async (req, res) => {
   const token = req.headers.token;
   await logout(token);
-  res.status(204).json();
+  res.sendStatus(204);
 });
 
 router.get('/:id', async (req, res) => {
@@ -45,7 +45,7 @@ router.get('/:id', async (req, res) => {
   if (host) {
     res.json(host).status(200);
   } else {
-    res.json({}).status(404);
+    res.sendStatus(404);
   }
 });
 

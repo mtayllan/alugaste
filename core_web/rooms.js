@@ -14,7 +14,11 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   const id = req.params.id;
   const room = await findRoom(id);
-  res.json(room);
+  if (room) {
+    res.json(room);
+  } else {
+    res.sendStatus(404);
+  }
 });
 
 router.post('/', upload.array('photos', 4), async (req, res) => {
@@ -33,7 +37,7 @@ router.post('/', upload.array('photos', 4), async (req, res) => {
     photos: req.files
   };
 
-  const room = await createRoom(formData);
+  await createRoom(formData);
 
   res.json({}).status(201);
 });

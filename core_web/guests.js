@@ -10,7 +10,7 @@ router.post('/', async (req, res) => {
     email: req.body.email,
     password: req.body.password
   };
-  
+
   const response = await createAccount(formData);
 
   if (response == 'already_exists') {
@@ -30,7 +30,7 @@ router.post('/login', async (req, res) => {
   const { email, password } = req.body;
   const result = await login({ email, password });
   if (result === 'not_found') {
-    res.status(422).json();
+    res.sendStatus(422);
   } else {
     res.json({ accessToken: result })
   }
@@ -39,7 +39,7 @@ router.post('/login', async (req, res) => {
 router.delete('/logout', async (req, res) => {
   const token = req.headers.token;
   await logout(token);
-  res.status(204).json();
+  res.sendStatus(204);
 });
 
 export default router;

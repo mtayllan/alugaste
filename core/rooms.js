@@ -23,6 +23,9 @@ const findRoomPipeline = (id) => (
 
 export const findRoom = async (id) => {
   const mongoClient = createMongoClient();
+  if (!ObjectId.isValid(id)) {
+    return null;
+  }
 
   try {
     await mongoClient.connect();

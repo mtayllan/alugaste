@@ -25,7 +25,7 @@ router.get('/:id/guests/:guest_id/', async (req, res) => {
   if (stay) {
     res.json(stay).status(200);
   } else {
-    res.json({}).status(404);
+    res.sendStatus(404);
   }
 });
 
@@ -35,7 +35,7 @@ router.get('/', async (req, res) => {
   if (stays) {
     res.json(stays).status(200);
   } else {
-    res.json({}).status(404);
+    res.sendStatus(404);
   }
 });
 
