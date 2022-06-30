@@ -8,7 +8,13 @@ export const getViewStay = async (req, res) => {
 };
 
 export const postRateStay = async (req, res) => {
-  const params = { rating: req.body.rating, content: req.body.content, stay_id: req.body.stay_id }
+  const params = {
+    rating: req.body.rating,
+    content: req.body.content,
+    stay_id: req.body.stay_id,
+    room_id: req.body.room_id,
+    guest_id: req.currentGuest._id
+  }
   await fetchApi('/comments/', {
     method: 'POST',
     body: JSON.stringify(params),

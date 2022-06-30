@@ -25,6 +25,7 @@
   <% } else { %>
     <form action="/guest/stays/rate" method="post">
       <input type="hidden" name="stay_id" value="<%= stay._id %>">
+      <input type="hidden" name="room_id" value="<%= stay.room_id %>">
       <input type="hidden" name="rating" value="0">
       <div class="estrelas">
         <% [1,2,3,4,5].forEach(star => { %>
