@@ -11,7 +11,6 @@ export const getRoomsJson = async (req, res) => {
 }
 
 export const getRoom = async (req, res) => {
-  console.log("fetchingggg");
   const room = await fetchApi(`/rooms/${req.params.id}`);
   if (room.status == 404) {
     res.render('rooms/not_found')
