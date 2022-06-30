@@ -1,6 +1,6 @@
 <%- contentFor('pageHeaders') %>
 <title><%= room.name %></title>
-<link rel="stylesheet" href="../room.css">
+<link rel="stylesheet" href="/room.css">
 
 
 <%- contentFor('body') %>
@@ -12,7 +12,7 @@
         <% if (room.photos[0]) { %>
           <img src="data:image/png;base64, <%= room.photos[0].toString('base64') %>" alt="Sala de estar 1">
         <% } else { %>
-          <img src="../sem-imagem.png" alt="imóvel sem imagem" class="house-pic">
+          <img src="/sem-imagem.png" alt="imóvel sem imagem" class="house-pic">
         <% } %>
       </div>
       <div class="others">
@@ -67,7 +67,6 @@
             </div>
             <div class="info">
               <div><%= comment.guest.name %></div>
-              <div><%= `${comment.date.getMonth() + 1}/${comment.date.getFullYear()}` %></div>
             </div>
           </div>
           <div class="text">
