@@ -1,6 +1,7 @@
 <%- contentFor('pageHeaders') %>
-<link rel="stylesheet" href="/my_stays.css">
+<link rel="stylesheet" href="/guest/profile.css">
 <title>Minhas Estadias</title>
+
 <%- contentFor('body') %>
 <div class="wrapper">
   <div class="profile">
@@ -11,6 +12,7 @@
       <div><%= guest.name %></div>
       <div><%= guest.email %></div>
       <div><%= guest.phone %></div>
+      <a href="/guest/profile/edit">Editar dados</a>
     </div>
   </div>
   <div class="stays">

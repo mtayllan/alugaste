@@ -1,6 +1,6 @@
 import express from 'express'
 import { authenticateByToken, login, logout } from 'core/guestAuth.js';
-import { createAccount } from 'core/guests.js';
+import { createAccount, updateAccount } from 'core/guests.js';
 const router = express.Router();
 
 router.post('/', async (req, res) => {
@@ -40,6 +40,23 @@ router.delete('/logout', async (req, res) => {
   const token = req.headers.token;
   await logout(token);
   res.sendStatus(204);
+});
+
+router.put('/:id', async (req, res) => {
+  const data = {
+    id: req.params.id,
+    name: req.body.name,
+    phone: req.body.phone,
+    email: req.body.email,
+    password: req.body.password,
+    photo: req.body.photo
+  };
+
+
+  const result = await updateAccount(data);
+  if (result != 'success') return res.sendStatus(422);
+
+  res.sendStatus(202);
 });
 
 export default router;

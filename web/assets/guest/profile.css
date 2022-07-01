@@ -29,6 +29,10 @@ html {
   font-weight: bold;
 }
 
+.profile .informations a {
+  font-size: 0.8rem;
+}
+
 .stay-container {
   display: flex;
   justify-content: space-between;

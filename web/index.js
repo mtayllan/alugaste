@@ -38,6 +38,7 @@ app.get('/rooms/json', rooms.getRoomsJson)
 app.get('/rooms/:id', rooms.getRoom);
 app.get('/hosts/:id', hostActions.fetchHost)
 app.get('/rooms/:id/stay',stayCreate.getCreate)
+
 // HOST ROUTES
 app.get('/host/profile', hostActions.fetchCurrentHost)
 
@@ -60,6 +61,8 @@ app.get('/guest/register', guestRegister.getRegister)
 app.post('/guest/register', guestRegister.postRegister)
 
 app.get('/guest/profile', guestProfile.getProfile)
+app.get('/guest/profile/edit', guestProfile.editProfile)
+app.post('/guest/profile/update', guestProfile.updateProfile)
 app.post('/stay/create', stayCreate.postCreate)
 
 app.get('/guest/stays/:id', guestStays.getViewStay);
