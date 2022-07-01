@@ -52,3 +52,24 @@ export const createAccount = async ({ name, birthdate, address, email, password 
 
   return login({ email, password });
 };
+
+export const updateAccount = async ({ id, name, birthdate, address, email, password, photo }) => {
+  const mongoClient = createMongoClient();
+
+  try {
+    const hostData = { name, birthdate, address, email, photo };
+    if (password) hostData['encrypted_password'] = hashMessage(password);
+
+    await mongoClient.connect();
+    const collection = mongoClient.db('alugaste').collection('hosts');
+    const query = { email };
+    const host = await collection.findOne(query);
+    if (host && !host._id.equals(ObjectId(id))) return 'email_taken';
+
+    await collection.updateOne({ _id: ObjectId(id) }, { $set: hostData });
+
+    return 'success';
+  } finally {
+    mongoClient.close();
+  }
+}

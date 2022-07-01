@@ -10,7 +10,7 @@
       <div class="row">
         <div class="fill">
           <% if (host.photo) { %>
-            <img src="data:image/png;base64, <%= host.photo.toString('base64') %>" alt="foto do anfitrião" />
+            <img src="<%= host.photo %>" alt="foto do anfitrião" />
           <% } else { %>
             <img src="../sem-imagem.png" alt="imóvel sem imagem" class="house-pic">
           <% } %>
@@ -21,6 +21,12 @@
         <%= host.name %>
       </div>
       <div class="row">
+        <%= host.phone %>
+      </div>
+      <div class="row">
+        <%= host.email %>
+      </div>
+      <div class="row">
         <%= host.reviewMean %> estrelas
       </div>
       <div class="row">
@@ -28,6 +34,9 @@
       </div>
       <div class="row mt-2">
         De <%= host.address %>
+      </div>
+      <div class ="edit">
+        <a href="/host/profile/edit">Editar dados</a>
       </div>
     </div>
     <div id="house-list-card" class="card">

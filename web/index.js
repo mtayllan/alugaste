@@ -15,6 +15,7 @@ import * as guestStays from './actions/guest/stays.js';
 import * as rooms from './actions/rooms.js';
 import * as hostActions from './actions/host/actions.js'
 import * as hostRooms from './actions/host/rooms.js';
+import * as hostProfile from './actions/host/profile.js';
 import * as guestProfile from './actions/guest/profile.js';
 import * as stayCreate from './actions/stay/create.js'
 const app = express();
@@ -41,6 +42,8 @@ app.get('/rooms/:id/stay',stayCreate.getCreate)
 
 // HOST ROUTES
 app.get('/host/profile', hostActions.fetchCurrentHost)
+app.get('/host/profile/edit', hostProfile.editProfile)
+app.post('/host/profile/update', hostProfile.updateProfile)
 
 app.get('/host/login', hostLogin.getLogin);
 app.post('/host/login', hostLogin.postLogin);

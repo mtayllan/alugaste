@@ -1,5 +1,5 @@
 import express from 'express'
-import { getHost, createAccount } from 'core/hosts.js';
+import { getHost, createAccount, updateAccount } from 'core/hosts.js';
 import { authenticateByToken, login, logout } from 'core/hostAuth.js';
 
 const router = express.Router();
@@ -47,6 +47,25 @@ router.get('/:id', async (req, res) => {
   } else {
     res.sendStatus(404);
   }
+});
+
+router.put('/:id', async (req, res) => {
+  const data = {
+    id: req.params.id,
+    name: req.body.name,
+    phone: req.body.phone,
+    email: req.body.email,
+    password: req.body.password,
+    photo: req.body.photo,
+    birthdate:req.body.birthdate,
+    address:req.body.address
+  };
+
+
+  const result = await updateAccount(data);
+  if (result != 'success') return res.sendStatus(422);
+
+  res.sendStatus(202);
 });
 
 export default router;

@@ -1,0 +1,23 @@
+<%- contentFor('pageHeaders') %>
+<link rel="stylesheet" href="/host/edit_profile.css">
+<title>Editar perfil</title>
+
+<%- contentFor('body') %>
+<h1>Editar perfil</h1>
+<form action="/host/profile/update" method="POST">
+  <input type="text" name="name" placeholder="Nome" required value="<%= locals.formData?.name %>">
+  <input type="tel" name="phone" placeholder="Telefone" required value="<%= locals.formData?.phone %>">
+  <input type="url" name="photo" placeholder="Url para foto" required value="<%= locals.formData?.photo %>">
+  <input type="email" name="email" placeholder="Email" required value="<%= locals.formData?.email %>">
+  <input type="password" name="password" placeholder="Senha" value="<%= locals.formData?.password %>">
+  <input type="date" name="birthdate" required value="<%= locals.formData?.birthdate %>">
+  <input type="text" name="address" placeholder="Endereço" required value="<%= locals.formData?.address %>">
+
+  <% if (locals.errors) { %>
+    <span> Dados inválidos </span>
+  <% } %>
+
+  <button type="submit">Salvar</button>
+</form>
+
+

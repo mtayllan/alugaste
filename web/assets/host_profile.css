@@ -56,7 +56,9 @@ input {
 .mt-2 {
     margin-top: 2em;
 }
-
+.edit{
+    font-size: 0.8rem;
+}
 .house-item-card {
     padding: 0.5rem;
     margin: 5px;
