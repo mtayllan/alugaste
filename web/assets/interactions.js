@@ -38,8 +38,12 @@ const updateFontSize = (type) => {
 const updateStars = (stars) => {
   const totalStars = parseInt(stars);
   document.getElementsByName('rating')[0].value = stars;
-  Array.from(document.getElementsByClassName('fa-star')).forEach((element, index) => {
-    element.classList.toggle('checked', stars > index);
+  Array.from(document.getElementsByClassName('form-stars')).forEach((element, index) => {
+    if (stars > index) {
+      element.classList.add('checked')
+    } else {
+      element.classList.remove('checked')
+    }
   })
 }
 
@@ -51,8 +55,18 @@ document.addEventListener("DOMContentLoaded", function(e) {
   updateFontSize();
 });
 
-if (document.getElementById('load-rooms')) {
+const editComment = (content) => {
+  document.getElementById('show-comment').classList.add("hidden");
+  document.getElementById('edit-comment-form').classList.remove("hidden");
+  document.getElementById('edit-comment-content').innerText = content;
+}
 
+const undoEdit = () => {
+  document.getElementById('show-comment').classList.remove("hidden");
+  document.getElementById('edit-comment-form').classList.add("hidden");
+}
+
+if (document.getElementById('load-rooms')) {
   document.getElementById('load-rooms').addEventListener("click", (currentPage = 0) => {
     next_page = parseInt(document.getElementById('load-rooms').getAttribute('data-page'))
     fetch(`/rooms/json?page=${next_page}`)

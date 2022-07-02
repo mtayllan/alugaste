@@ -111,6 +111,10 @@ img.logo {
   padding-inline: 4%;
 }
 
+.hidden {
+  display: none;
+}
+
 .navbar-toggler,
 .navbar-toggler-check {
   display: none;

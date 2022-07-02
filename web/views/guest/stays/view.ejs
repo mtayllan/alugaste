@@ -12,19 +12,36 @@
     Data: <%= stay.start_date.toLocaleDateString() %> até <%= stay.end_date.toLocaleDateString() %>
   </p>
   <% if (stay.comment) { %>
-    <form>
+    <form id="show-comment">
       <div class=form>
         <div class="estrelas">
           <% [1,2,3,4,5].forEach(star => { %>
-            <span class="fa fa-star <%= star <= stay.comment.rating ? 'checked' : '' %>"></span>
+            <span class="fa fa-star <%= star <= stay.comment.rating ? 'checked' : '' %>" id="shown-stars"></span>
           <% }) %>
         </div>
         <p><%= stay.comment.content %></p>
       </div>
+      <div class="row">
+        <a href="/guest/stays/<%= stay._id %>/comments/delete/<%= stay.comment._id %>"><i class="fa fa-trash" aria-hidden="true"></i> Excluir</a>
+      </div>
+      <div class="row" onclick="editComment('<%= stay.comment.content %>')">
+        <i class="fas fa-edit"></i> Editar
+      </div>
     </form>
-    <div class="row">
-      <a href="/guest/stays/<%= stay._id %>/comments/delete/<%= stay.comment._id %>"><i class="fa fa-trash" aria-hidden="true"></i> Excluir comentário</a>
-    </div>
+
+    <form action="/guest/stays/<%= stay._id %>/comments/update/<%= stay.comment._id %>" method="post" class="hidden" id="edit-comment-form">
+      <input type="hidden" name="stay_id" value="<%= stay._id %>">
+      <input type="hidden" name="room_id" value="<%= stay.room_id %>">
+      <input type="hidden" name="rating" value="<%= stay.comment.rating %>">
+      <div class="estrelas">
+        <% [1,2,3,4,5].forEach(star => { %>
+          <span class="fa fa-star form-stars <%= star <= stay.comment.rating ? 'checked' : '' %>" onclick="updateStars('<%= star %>')"></span>
+        <% }) %>
+      </div>
+      <textarea name="content" cols="30" rows="10" id="edit-comment-content"></textarea>
+      <button type="submit">Atualizar avaliação</button>
+      <div onclick="undoEdit()">Cancelar</div>
+    </form>
   <% } else { %>
     <form action="/guest/stays/rate" method="post">
       <input type="hidden" name="stay_id" value="<%= stay._id %>">
@@ -32,7 +49,7 @@
       <input type="hidden" name="rating" value="0">
       <div class="estrelas">
         <% [1,2,3,4,5].forEach(star => { %>
-          <span class="fa fa-star" onclick="updateStars('<%= star %>')"></span>
+          <span class="fa fa-star form-stars" onclick="updateStars('<%= star %>')"></span>
         <% }) %>
       </div>
       <textarea name="content" cols="30" rows="10" placeholder="Digite o que achou"></textarea>
