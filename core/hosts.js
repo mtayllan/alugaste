@@ -33,7 +33,7 @@ export const getHost = async (id) => {
 }
 
 // POST hosts
-export const createAccount = async ({ name, birthdate, address, email, password }) => {
+export const createAccount = async ({ name, birthdate, address, email, password, phone, photo }) => {
   const mongoClient = createMongoClient();
 
   try {
@@ -44,7 +44,7 @@ export const createAccount = async ({ name, birthdate, address, email, password 
     if (host) return 'already_exists';
 
     const encryptedPassword = hashMessage(password);
-    const record = { name, birthdate, address, email, encrypted_password: encryptedPassword };
+    const record = { name, birthdate, address, phone, photo, email, encrypted_password: encryptedPassword };
     await collection.insertOne(record);
   } finally {
     mongoClient.close();
@@ -53,11 +53,11 @@ export const createAccount = async ({ name, birthdate, address, email, password 
   return login({ email, password });
 };
 
-export const updateAccount = async ({ id, name, birthdate, address, email, password, photo }) => {
+export const updateAccount = async ({ id, name, birthdate, address, email, password, photo, phone }) => {
   const mongoClient = createMongoClient();
 
   try {
-    const hostData = { name, birthdate, address, email, photo };
+    const hostData = { name, birthdate, address, email, photo,phone };
     if (password) hostData['encrypted_password'] = hashMessage(password);
 
     await mongoClient.connect();

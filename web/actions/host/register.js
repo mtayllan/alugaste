@@ -9,7 +9,7 @@ export const getRegister = (req, res) => {
 }
 
 export const postRegister = async (req, res) => {
-  const formData = { name: req.body.name, birthdate: req.body.birthdate, address: req.body.address, email: req.body.email, password: req.body.password };
+  const formData = { name: req.body.name, birthdate: req.body.birthdate, address: req.body.address, email: req.body.email, photo:req.body.photo, phone:req.body.phone, password: req.body.password };
 
   await fetch(`${process.env.PRIVATE_SERVER_URL}/hosts/`, {
     method: 'POST',

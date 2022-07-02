@@ -11,11 +11,8 @@
       <input type="password" name="password" placeholder="Senha" required>
       <input type="date" name="birthdate" required value="<%= locals.formData?.birthdate %>">
       <input type="text" name="address" placeholder="Endereço" required value="<%= locals.formData?.address %>">
-
-      <div class="upload">
-        <label for="profile_picture">Envie sua foto</label>
-        <input type="file" name="profile_picture" id="profile_picture">
-      </div>
+      <input type="url" name="photo" placeholder="Url para foto" required value="<%= locals.formData?.photo %>">
+      <input type="tel" name="phone" placeholder="Telefone" required value="<%= locals.formData?.phone %>">
 
       <% if (locals.error) { %>
         <div>Já existe uma conta com este email</div>

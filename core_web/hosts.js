@@ -7,7 +7,7 @@ const router = express.Router();
 
 
 router.post('/', async (req, res) => {
-  const formData = { name: req.body.name, birthdate: req.body.birthdate, address: req.body.address, email: req.body.email, password: req.body.password };
+  const formData = { name: req.body.name, birthdate: req.body.birthdate, address: req.body.address, email: req.body.email, password: req.body.password, phone:req.body.phone, photo:req.body.photo };
   const response = await createAccount(formData);
 
   if (response == 'already_exists') {
