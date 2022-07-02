@@ -15,3 +15,17 @@ export const createComment = async ({ rating, content, stay_id, room_id, guest_i
     mongoClient.close();
   }
 };
+
+// DELETE /comments/:id
+export const deleteComment = async (id) => {
+  const mongoClient = createMongoClient();
+
+  try {
+    await mongoClient.connect();
+
+    const collection = mongoClient.db('alugaste').collection('comments');
+    await collection.deleteOne({ _id: ObjectId(id) });
+  } finally {
+    mongoClient.close();
+  }
+};

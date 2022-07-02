@@ -70,6 +70,7 @@ app.post('/stay/create', stayCreate.postCreate)
 
 app.get('/guest/stays/:id', guestStays.getViewStay);
 app.post('/guest/stays/rate', guestStays.postRateStay);
+app.get('/guest/stays/:stay_id/comments/delete/:id', guestStays.deleteRateStay);
 
 
 app.listen(port, () => {

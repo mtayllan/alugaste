@@ -19,7 +19,7 @@ export const postLogin = async (req, res) => {
     res.cookie('_alugaste_host_session', response.accessToken);
     res.redirect('/');
   } else {
-    res.render('host/login', { error: true, formData })
+    res.status(422).render('host/login', { error: true, formData });
   }
 }
 

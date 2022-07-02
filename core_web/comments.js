@@ -1,5 +1,5 @@
 import express from 'express'
-import { createComment } from 'core/comments.js';
+import { createComment, deleteComment } from 'core/comments.js';
 
 const router = express.Router();
 
@@ -15,6 +15,12 @@ router.post('/', async (req, res) => {
   await createComment(params);
 
   res.json({}).status(201);
+});
+
+router.delete('/:id', async (req, res) => {
+  await deleteComment(req.params.id);
+
+  res.status(204).json({});
 });
 
 export default router;

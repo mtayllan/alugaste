@@ -22,6 +22,9 @@
         <p><%= stay.comment.content %></p>
       </div>
     </form>
+    <div class="row">
+      <a href="/guest/stays/<%= stay._id %>/comments/delete/<%= stay.comment._id %>"><i class="fa fa-trash" aria-hidden="true"></i> Excluir comentário</a>
+    </div>
   <% } else { %>
     <form action="/guest/stays/rate" method="post">
       <input type="hidden" name="stay_id" value="<%= stay._id %>">

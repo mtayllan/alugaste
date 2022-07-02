@@ -23,3 +23,11 @@ export const postRateStay = async (req, res) => {
 
   res.redirect(`/guest/stays/${req.body.stay_id}`);
 }
+
+export const deleteRateStay = async (req, res) => {
+  await fetchApi(`/comments/${req.params.id}/`, {
+    method: 'DELETE'
+  });
+
+  res.redirect(`/guest/stays/${req.params.stay_id}`);
+}
