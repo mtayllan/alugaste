@@ -31,3 +31,22 @@ export const deleteRateStay = async (req, res) => {
 
   res.redirect(`/guest/stays/${req.params.stay_id}`);
 }
+
+export const updateRateStay = async (req, res) => {
+  const params = {
+    id: req.params.id,
+    rating: req.body.rating,
+    content: req.body.content,
+    stay_id: req.body.stay_id,
+    room_id: req.body.room_id,
+    guest_id: req.currentGuest._id
+  }
+
+  await fetchApi(`/comments/${req.params.id}/`, {
+    method: 'PUT',
+    body: JSON.stringify(params),
+    headers: { 'Content-Type': 'application/json' }
+  });
+
+  res.redirect(`/guest/stays/${req.params.stay_id}`);
+}
