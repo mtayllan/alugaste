@@ -7,7 +7,7 @@ const upload = multer({ dest: 'uploads/', limits: { fileSize: 1024 * 1024 } })
 
 router.get('/', async (req, res) => {
   const hostId = req.params.host_id;
-  const rooms = await listRooms(hostId, req.query.search);
+  const rooms = await listRooms(hostId, req.query.search, req.query.page);
   res.json(rooms);
 });
 
